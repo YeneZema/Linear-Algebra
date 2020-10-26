@@ -1,0 +1,181 @@
+\documentclass[11pt]{article}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes,shadows,positioning,backgrounds}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,amscd,xspace}
+\usepackage{graphicx,xcolor,lipsum,cancel}
+\usepackage[margin=1in]{geometry}
+\usepackage[linkcolor=blue]{hyperref}
+\hypersetup{pdfborder={0 0 0}, colorlinks=true, urlcolor=blue}
+\usepackage{todonotes}
+\usepackage{tocloft}
+\usepackage{microtype}
+\usepackage{palatino}
+
+%%% Headers and footers
+\usepackage{fancyhdr}												% Needed to define custom headers/footers
+	\pagestyle{fancy}												% Enabling the custom headers/footers
+\usepackage{lastpage}	
+\usepackage{afterpage}
+% Header (empty)
+\lhead{}
+\chead{}
+\rhead{}
+% Footer (you may change this to your own needs)
+\lfoot{\footnotesize \texttt{www.albohessab.weebly.com} \textbullet ~Miliyon T.}
+\cfoot{}
+\rfoot{\footnotesize page \thepage\ of \pageref{LastPage}}	% "Page 1 of 2"
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+% various theorems, numbered by section
+\newtheorem{example}{Example}[section]
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{rem}[thm]{Remark}
+\theoremstyle{plain}
+%777777777777777777777777777777
+
+
+\begin{document}
+\clearpage
+
+\title{Matrix Exponentiation}
+\author{Miliyon T.}
+\maketitle
+\section{Introductions}
+
+The matrix exponential plays an important role in solving system of linear differential equations. On this page, we will define such an object and show its most important properties. The natural way of defining the exponential of a matrix is to go back to the exponential function $e^x$ and find a definition which is easy to extend to matrices. Indeed, we know that the Taylor polynomials
+
+\[T_n(x) = 1 + \frac{x}{1!}+ \frac{x^2}{2!}+ \frac{x^3}{3!}+\cdots+ \frac{x^n}{n!}\]
+converges pointwise to $e^x$ and uniformly whenever $x$ is bounded. These algebraic polynomials may help us in defining the exponential of a matrix. Indeed, consider a square matrix $A$ and define the sequence of matrices
+
+\[
+A_n = I_n + \frac{1}{1!}A+ \frac{1}{2!}A^2+ \frac{1}{3!}A^3+\cdots+ \frac{1}{n!}A^n.
+\]
+When $n$ gets large, this sequence of matrices get closer and closer to a certain matrix. This is not easy to show; it relies on the conclusion on $e^x$ above. We write this limit matrix as $e^A$. This notation is natural due to the properties of this matrix. Thus we have the formula
+
+\[
+e^A = I_n + \frac{1}{1!}A+ \frac{1}{2!}A^2+ \frac{1}{3!}A^3+\cdots+ \frac{1}{n!}A^n + \cdots \cdots
+\]
+One may also write this in series notation as
+
+\[
+e^A = \sum_{n=0}^{\infty} \frac{1}{n!}A^n
+\]
+At this point, the reader may feel a little lost about the definition above. To make this stuff clearer, let us discuss an easy case: diagonal matrices.
+
+\section{Examples}
+
+\begin{exmp}
+Consider the diagonal matrix
+
+\[
+A = \left(\begin{array}{cc} 2&0\\ 0&-1\\ \end{array}\right).
+\]
+It is easy to check that
+
+\[
+A^n = \left(\begin{array}{cc} 2^n&0\\ 0&(-1)^n\\ \end{array}\right)
+\]
+for $n=1,2,\cdots$. Hence we have
+
+\[
+I_n + \frac{1}{1!}A+ \frac{1}{2!}A^2+ \frac{1}{3!}A^3+\cdots+ \frac{1}{n!}A^n=
+\left(\begin{array}{cc}
+1 + \frac{2}{1!}+ \cdots+\frac{2^n}{n!} & 0\\
+0& 1+\frac{(-1)}{1!}+\cdots+ \frac{(-1)^n}{n!}\\
+\end{array}\right).
+\]
+Using the above properties of the exponential function, we deduce that
+\[
+e^A = \left(\begin{array}{cc} e^2&0\\ 0&e^{-1}\\ \end{array}\right).
+\]
+Indeed, for a diagonal matrix $A$, $e^A$ can always be obtained by replacing the entries of $A$ (on the diagonal) by their exponentials. Now let $B$ be a matrix similar to $A$. As explained before, then there exists an invertible matrix $P$ such that
+\[
+B = P^{-1}AP.
+\]
+Moreover, we have
+\[
+B^n = P^{-1}A^nP
+\]
+for $n=1,2,\cdots$, which implies
+\[
+I_n + \frac{1}{1!}B+ \frac{1}{2!}B^2+\cdots+ \frac{1}{n!}B^n ... ... \frac{1}{1!}A+ \frac{1}{2!}A^2+\cdots+ \frac{1}{n!}A^n\Bigg)P.
+\]
+This clearly implies that
+\[
+e^B = P^{-1}\left(\begin{array}{cc} e^2&0\\ 0&e^{-1}\\ \end{array}\right)P.
+\]
+\end{exmp}
+In fact, we have a more general conclusion. Indeed, let $A$ and $B$ be two square matrices. Assume that $A \sim B$. Then we have $e^A \sim e^B$. Moreover, if $B = P^{-1}AP$, then
+\[
+e^B = P^{-1}e^AP.
+\]
+
+\begin{exmp}
+Consider the matrix
+
+\[
+A= \left(\begin{array}{rrr} 0&1&2\\ 0&0&-1\\ 0&0&0\\ \end{array}\right).
+\]
+This matrix is upper-triangular. Note that all the entries on the diagonal are $0$. These types of matrices have a nice property. Let us discuss this for this example. First, note that
+
+\[
+A^2 =
+\left(
+\begin{array}{rrr}
+0&0&-1\\ 0&0&0\\ 0&0&0\\
+\end{array}
+\right)
+\mbox{ and }
+A^3=
+\left(
+\begin{array}{rrr}
+0&0&0\\ 0&0&0\\ 0&0&0\\
+\end{array}\right) = {\cal O}.
+\]
+In this case, we have
+
+\[
+e^A = I + A + \frac{1}{2!} A^2 = \left(\begin{array}{rrr} 1&1&3/2\\ 0&1&-1\\ 0&0&1\\ \end{array}\right).
+\]
+
+\end{exmp}
+
+In general, let $A$ be a square upper-triangular matrix of order $n$. Assume that all its entries on the diagonal are equal to $0$. Then we have
+
+\[
+A^n = {\cal O}.
+\]
+Such matrix is called a nilpotent matrix. In this case, we have
+
+\[
+e^A = I_n + \frac{1}{1!}A+ \frac{1}{2!}A^2+ \frac{1}{3!}A^3+\cdots+ \frac{1}{(n-1)!}A^{n-1}.
+\]
+As we said before, the reasons for using the exponential notation for matrices reside in the following properties:
+
+\begin{thm}
+The following properties hold:
+\begin{enumerate}
+  \item $e^{\cal O} = I_n$;
+  \item If $A$ and $B$ commute, meaning $AB = BA$, then we have
+\[e^{A+B} = e^Ae^B;\]
+
+  \item For any matrix $A$, $e^A$ is invertible and
+\[\Big(e^A \Big)^{-1} = e^{-A}.\]
+\end{enumerate}
+
+\end{thm}
+
+
+\end{document}

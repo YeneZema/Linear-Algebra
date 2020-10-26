@@ -1,0 +1,174 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}								% Package to create dummy text
+\usepackage{amsmath,amsfonts,amsthm,amssymb}					% Math packages
+\usepackage[pdftex]{graphicx}									% Enable pdflatex
+\usepackage{hyperref} % URLs
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{rem}[thm]{Remark}
+\theoremstyle{plain}
+
+
+
+\begin{document}
+\nocite{}
+
+\title{Eigenvalues and Eigenvectors}
+
+\author{Miliyon T.}
+\date{October 7, 2013}
+\maketitle
+
+\section{Introduction}
+
+
+\begin{defn}
+Assume that \( L:\mathbb R^k\to\mathbb R^k \) is a linear operator. If the vector \( v\in\mathbb R^k \) and the scalar \( \lambda\in\mathbb R \) satisfy \( L v=\lambda v \), then \( v \) is called an eigenvector of \( L \). The scalar \( \lambda \) is called an eigenvalue of \( L \).
+\end{defn}
+
+Clearly, zero vector is always an eigen-vector. Also, if \( u \) is an eigenvector, then \( \kappa u \) is also an eigenvector for every \( \kappa\in\mathbb R \). Indeed, assuming that \( \lambda \) is the eigenvalue corresponding to \( u \) we have \( A(\kappa u)=\kappa A(u)=\kappa\lambda u=\lambda \kappa u \).
+
+\begin{exmp}
+Find the eigenvalues and the eigenvectors of the operator with the matrix \begin{eqnarray*}A&=&\left[\begin{array}{cc}5&4\\-4&-5\end{array}\right]. \end{eqnarray*}
+\end{exmp}
+
+Hide solution
+
+We are looking for a vector \( u=\left[\begin{array}{c}x\\y\end{array}\right]\) and a scalar \( \lambda\in\mathbb R \) such that \( Au=\lambda u \). The last equation is equivalent to the system: \begin{eqnarray*} 5x+4y&=&\lambda x\\ -4x-5y&=&\lambda y. \end{eqnarray*} The previous system is equivalent to: \begin{eqnarray*} (5-\lambda)x+4y&=&0\\ -4x+(-5-\lambda)y&=&0. \end{eqnarray*} If we multiply the first equation by \( 5+\lambda \), the second equation by \( 4 \) and add the obtained two equations we deduce: \( (25-\lambda^2-16)x=0 \). If \( 9-\lambda^2\neq 0 \), then we must have \( x=0 \). This would imply that \( y=0 \) which would lead to a trivial eigenvector. Assume that \( 9-\lambda^2=0 \). Then we have \( \lambda\in\{-3,3\} \), and these are the two eigenvalues.
+
+The eigenvalue \( \lambda_1=3 \) corresponds to the eigenvector whose coordinates \( (x,y) \) satisfy the system: \begin{eqnarray*} 2x+4y&=&0\\ -4x-8y&=&0. \end{eqnarray*} A non-trivial solution \( (-2,1) \) corresponds to the eigenvector \( u_1=\left[\begin{array}{c}-2\\1\end{array}\right]\).
+
+Similarly, the eigenvalue \( \lambda_2=-3 \) gives us the system: \begin{eqnarray*} 8x+4y&=&0\\ -4x-2y&=&0. \end{eqnarray*} This gives us another eigenvector \( u_2=\left[\begin{array}{c}-1\\2\end{array}\right]\).
+
+In the previous example, we found eigenvalues as the zeroes of the polynomial \( \varphi_A(\lambda)=\lambda^2-9 \). This is called the characteristic polynomial of the matrix \( A \). More precisely,
+
+\begin{defn}
+Let \( A \) be an \( n\times n \) matrix. The polynomial \( \varphi_A(\lambda)=\mbox{det }\left(A-\lambda I\right)\) is called the characteristic polynomial of the matrix \( A \).
+\end{defn}
+
+The proof of the following theorem is obvious once we have seen the solution of Example 1.
+
+\begin{thm}
+Assume that \( A \) is an \( n\times n \) matrix. A real number \( \eta \) is an eigenvalue of \( A \) if and only if \( \varphi_A(\eta)=0 \).
+\end{thm}
+Hide proof
+The real number \( \eta \) is an eigenvalue of \( A \) if and only if the equation \( Av=\eta v \) has at least one non-trivial solution \( v\in\mathbb R^n \). The last vector equation is equivalent to \( (A-\eta I)v=0 \), which can be understood as a system of \( n \) equation with \( n \) variables. This system has a non-trivial solution if and only if the matrix \( A-\eta I \) is non-invertible.
+
+Polynomials with matrices
+
+We will use the eigenvectors and eigenvalues to find closed formulas for \( n \)-th powers of matrices. We will illustrate the method by considering the following example.
+
+\begin{exmp}
+Let \( A=\left[\begin{array}{cc} 5&4\\-4&-5\end{array}\right]\). Let us denote by \( a_n \), \( b_n \), \( c_n \), and \( d_n \) the numbers such that \( A^n=\left[\begin{array}{cc} a_n&b_n\\c_n&d_n\end{array}\right]\). Find the formulas for \( a_n \), \( b_n \), \( c_n \), and \( d_n \).
+\end{exmp}
+
+Hide solution
+
+The operator \( A^n \) is uniquely determined by the vectors \( A^nv \) and \( A^nw \) for any two vectors \( v,w\in\mathbb R^2 \) that form a basis for \( \mathbb R^2 \).
+
+Assume that there are two eigenvectors of \( A \) that form a basis for \( \mathbb R^2 \). Assume that \( v_1,v_2\in\mathbb R^2 \) and \( \lambda_1,\lambda_2\in\mathbb R \) satisfy \( Av_1=\lambda_1v_1 \) and \( Av_2=\lambda_2v_2 \). Then we have \[ A^nv_1=A^{n-1}(Av_1)=A^{n-1}(\lambda_1v_1)=\lambda_1A^{n-1}v_1=\lambda_1A^{n-2}(Av_1))=\lambda_1^2A^{n-2}v_1=\cdots=\lambda_1^nv_1,\] and similarly \( A^nv_2=\lambda_2^nv_2 \).
+
+From Example 1 we know that \( u_1=\left[\begin{array}{c}-2\\1\end{array}\right]\) and \( u_2=\left[\begin{array}{c}-1\\2\end{array}\right]\) are the eigenvectors of \( A \) and that their corresponding eigenvalues are \( 3 \) and \( -3 \). Therefore \( A^n\left[\begin{array}{c}-2\\1\end{array}\right]=\left[\begin{array}{c}-2\cdot 3^n\\3^n\end{array}\right]\) and \( A^n\left[\begin{array}{c}-1\\2\end{array}\right]=\left[\begin{array}{c}-1\cdot (-3)^n\\2\cdot (-3)^n\end{array}\right]\).
+
+It remains to find the matrix of \( A^n \). In order to do that we need to find \( A^n\left[\begin{array}{c}1\\0\end{array}\right]\) and \( A^n\left[\begin{array}{c}0\\1\end{array}\right]\).
+
+Calculating \( A^n\left[\begin{array}{c}1\\0\end{array}\right]\). We need to find scalars \( \alpha_1 \) and \( \alpha_2 \) such that \( \left[\begin{array}{c}1\\0\end{array}\right]= \alpha_1u_1+\alpha_2u_2\). This gives us the system of equations: \begin{eqnarray*} -2\alpha_1-\alpha_2&=&1\\ \alpha_1+2\alpha_2&=&0. \end{eqnarray*} Multiplying the second equation by 2 and adding it to the first implies \( \alpha_2=\frac13 \). Substituting this value into the second equation yields \( \alpha_1=-\frac23 \). Thus \[A^n\left[\begin{array}{c}1\\0\end{array}\right]=-\frac23A^nu_1+\frac13A^nu_2= \left[\begin{array}{c} \frac23\cdot 2\cdot 3^n+\frac13\cdot (-(-3)^n)\\ -\frac23\cdot 3^n+\frac13\cdot 2\cdot (-3)^n \end{array}\right] =\left[\begin{array}{c} 4\cdot 3^{n-1}+(-3)^{n-1}\\ -2\cdot 3^{n-1}-2\cdot (-3)^{n-1} \end{array}\right] .\]
+
+Calculating \( A^n\left[\begin{array}{c}0\\1\end{array}\right]\). We need to find scalars \( \beta_1 \) and \( \beta_2 \) for which \( \left[\begin{array}{c}0\\1\end{array}\right]=\beta_1u_1+\beta_2 u_2\). The last equation is equivalent to the following system: \begin{eqnarray*} -2\beta_1-\beta_2&=&0\\ \beta_1+2\beta_2&=&1. \end{eqnarray*} If we multiply the second equation by \( 2 \) and add it to the first we obtain \( \beta_2=\frac23 \). Substituting this value in the first equation yields \( \beta_1=-\frac13 \). Therefore \[A^n\left[\begin{array}{c}0\\1\end{array}\right]=-\frac13A^nu_1+\frac23A^nu_2= \left[\begin{array}{c} \frac13\cdot 2\cdot 3^n+\frac23\cdot (-(-3)^n)\\ -\frac13\cdot 3^n+\frac43\cdot (-3)^n \end{array}\right] =\left[\begin{array}{c} 2\cdot 3^{n-1}+2\cdot (-3)^{n-1}\\ - 3^{n-1}-4\cdot (-3)^{n-1} \end{array}\right] .\]
+
+Thus \[A^n=\left[\begin{array}{cc} 4\cdot 3^{n-1}+(-3)^{n-1} & 2\cdot 3^{n-1}+2\cdot (-3)^{n-1}\\ -2\cdot 3^{n-1}-2\cdot (-3)^{n-1} & - 3^{n-1}-4\cdot (-3)^{n-1} \end{array}\right], \] or, equivalently: \begin{eqnarray*} a_n&=&4\cdot 3^{n-1}+(-3)^{n-1} \\ b_n&=&2\cdot 3^{n-1}+2\cdot (-3)^{n-1}\\ c_n&=& -2\cdot 3^{n-1}-2\cdot (-3)^{n-1} \\ d_n&=& - 3^{n-1}-4\cdot (-3)^{n-1}. \end{eqnarray*}
+
+\begin{thm}
+Assume that \( A \) is an \( n\times n \) matrix that has \( n \) linearly independent eigenvectors \( v_1 \), \( \dots \), \( v_n \). Assume that \( \lambda_1 \), \( \dots \), \( \lambda_n \) are eigenvalues corresponding to \( v_1 \), \( \dots \), \( v_n \). Then there exists an invertible \( n\times n \) matrix \( P \) such that \[ P^{-1}AP=\left[\begin{array}{ccccc} \lambda_1&0&0&\cdots&0\\0&\lambda_2&0&\cdots&0\\ 0&0&\lambda_3&\cdots&0\\&&&\vdots&\\ 0&0&0&\dots&\lambda_n\end{array}\right].\]
+\end{thm}
+
+\begin{proof}
+Assume that \( v_i=\left[\begin{array}{c} v_{1i}\\v_{2i}\\\vdots\\v_{ni}\end{array}\right]\), and let \( P= \left[\begin{array}{ccccc} v_{11}&v_{12}&v_{13}&\cdots&v_{1n}\\ v_{21}&v_{22}&v_{23}&\cdots&v_{2n}\\ & & &\vdots& \\ v_{n1}&v_{n2}&v_{n3}&\cdots&v_{nn} \end{array}\right]\).
+
+Let \( e_1 \), \( \dots \), \( e_n \) be the standard basis of \( \mathbb R^n \). In other words, the vector \( e_i \) has \( 1 \) at the \( i \)-th position and \( 0 \) at every other position. Then we have \( Pe_i=v_i \) for each \( i\in\{1,2,\dots, n\} \). Thus \( APe_i=Av_i=\lambda_iv_i \) and \( P^{-1}APe_i=P^{-1}(\lambda_iv_i)=\lambda_iP^{-1}v_i=\lambda_ie_i \). Thus \[ P^{-1}AP(e_i)=\left[\begin{array}{c}0\\\vdots\\0\\\lambda_i\\0\\\vdots\\0\end{array}\right].\] The \( i \)-th row of the matrix of the operator \( P^{-1}AP \) must be equal to \( P^{-1}AP(e_i) \), hence the matrix of the operator \( P^{-1}AP \) must be \( \left[\begin{array}{ccccc} \lambda_1&0&0&\cdots&0\\0&\lambda_2&0&\cdots&0\\ 0&0&\lambda_3&\cdots&0\\&&&\vdots&\\ 0&0&0&\dots&\lambda_n\end{array}\right]\).
+\end{proof}
+
+\begin{thm}[Cayley-Hamilton]
+Assume that \( A \) is an \( n\times n \) matrix and \( \varphi_A \) its characteristic polynomial. Then \( \varphi_A(A)=0 \).
+\end{thm}
+\begin{proof}
+We will prove this theorem under the assumption that \( A \) has \( n \) linearly independent eigenvectors. The proof of the general case follows the same idea but requires the theory of Jordan canonical forms. In Example 5 at the end of this article we will see some techniques involving Jordan canonical forms.
+
+According to Theorem 2 there is a matrix \( P \) such that \( P^{-1}AP=D \), where \( D \) is a diagonal matrix whose diagonal entries are the eigenvalues of \( A \). Then we have \( A=PDP^{-1} \) and \( A^k=PD^kP^{-1} \) for each \( k\in\mathbb N \). Thus \( \varphi_A(A)=P\varphi_A(D)P^{-1} \). However, \( \varphi_A(D)=0 \), since the entries of \( D \) are the eigenvalues of \( A \), and each of them is a zero of the characteristic polynomial according to Theorem 1. This completes the proof.
+\end{proof}
+
+\section{Recursive systems of equations}
+
+Our next goal is to use the techniques of eigenvalues and eigenvectors to solve the recursive systems of equations.
+
+\begin{exmp}
+Assume that \( (x_n)_{n=0}^{\infty} \) and \( (y_n)_{n=0}^{\infty} \) are two sequence of real numbers defined in the following way: \( x_0=3 \), \( y_0=2 \), and \begin{eqnarray*} x_{n+1}&=&5x_n+4y_n\\ y_{n+1}&=&-4x_n-5y_n, \end{eqnarray*} for \( n\geq 0 \). Determine the formulas for \( x_n \) and \( y_n \).
+\end{exmp}
+
+Hide solution
+
+Let \( A=\left[\begin{array}{cc} 5&4\\-4&-5\end{array}\right]\). Then we have for \( n\geq 0 \): \( \left[\begin{array}{c}x_{n+1}\\y_{n+1}\end{array}\right]=A\left[\begin{array}{c}x_{n}\\y_{n}\end{array}\right]\). Therefore: \[\left[\begin{array}{c}x_{n}\\y_{n}\end{array}\right]=A\left[\begin{array}{c}x_{n-1}\\y_{n-1}\end{array}\right]= A^2\left[\begin{array}{c}x_{n-2}\\y_{n-2}\end{array}\right]=\cdots=A^n\left[\begin{array}{c}x_{0}\\y_{0}\end{array}\right]. \] In Example 2 we showed that \( A^n=\left[\begin{array}{cc} 4\cdot 3^{n-1}+(-3)^{n-1} & 2\cdot 3^{n-1}+2\cdot (-3)^{n-1}\\ -2\cdot 3^{n-1}-2\cdot (-3)^{n-1} & - 3^{n-1}-4\cdot (-3)^{n-1} \end{array}\right]\), hence: \[\left[\begin{array}{c}x_{n}\\y_{n}\end{array}\right]=\left[\begin{array}{cc} 4\cdot 3^{n-1}+(-3)^{n-1} & 2\cdot 3^{n-1}+2\cdot (-3)^{n-1}\\ -2\cdot 3^{n-1}-2\cdot (-3)^{n-1} & - 3^{n-1}-4\cdot (-3)^{n-1} \end{array}\right]\cdot \left[\begin{array}{c}3\\2\end{array}\right]= \left[\begin{array}{c} 4\cdot 3^{n}-(-3)^{n}+4\cdot 3^{n-1}+4\cdot (-3)^{n-1}\\ -2\cdot 3^{n}+2\cdot (-3)^{n} -2\cdot 3^{n-1}-8\cdot (-3)^{n-1} \end{array}\right]. \] Thus: \begin{eqnarray*} x_n&=&4\cdot 3^{n}-(-3)^{n}+4\cdot 3^{n-1}+4\cdot (-3)^{n-1}=16\cdot 3^{n-1}+7\cdot (-3)^{n-1}\\ y_n&=&-2\cdot 3^{n}+2\cdot (-3)^{n} -2\cdot 3^{n-1}-8\cdot (-3)^{n-1}=-8\cdot 3^{n-1}-14\cdot (-3)^{n-1}. \end{eqnarray*}
+
+Using the technique described above we can solve the recursive equations. The following example provides the formula for Fibonacci numbers.
+
+\begin{exmp}[Fibonacci numbers]
+Assume that \( (F_n)_{n=0}^{\infty} \) is the sequence defined as \( F_0=0 \), \( F_1=1 \) and for \( n\geq 0 \) the following equation holds: \[ F_{n+2}=F_{n+1}+F_n.\] Prove that \[ F_n=\frac1{\sqrt 5}\left(\frac{1+\sqrt 5}2\right)^n-\frac1{\sqrt 5}\left(\frac{1-\sqrt 5}2\right)^n.\]
+\end{exmp}
+
+Hide solution
+
+Let us denote \( G_n=F_{n+1} \). Then we have \( G_0=1 \), \( F_0=0 \) and for \( n\geq 0 \) the following holds: \begin{eqnarray*} \begin{array}{ccccc} F_{n+1}&=& & &G_n\\ G_{n+1}&=&F_n&+&G_n, \end{array} \end{eqnarray*} or, equivalently \( \left[\begin{array}{c}F_{n+1}\\G_{n+1}\end{array}\right]= \left[\begin{array}{cc}0&1\\1&1\end{array}\right] \left[\begin{array}{c}F_{n}\\G_{n}\end{array}\right]\). Let us denote \( A=\left[\begin{array}{cc}0&1\\1&1\end{array}\right]\). Similarly to the argument presented in Example 3 we get \( \left[\begin{array}{c}F_{n}\\G_{n}\end{array}\right]=A^n\left[\begin{array}{c}F_{0}\\G_{0}\end{array}\right]\).
+
+Therefore, our goal is to find \( A^n \). In order to do so, we will first find eigenvalues and eigenvectors of the matrix \( A \). The eigenvalues are the solutions of the equation \( \varphi_A(x)=0 \), where \(  \varphi_A(x)=\mbox{det }(A-xI)=-x(1-x)-1=x^2-x-1 \). Since \(  \varphi_A(x)=\left(x-\frac{1-\sqrt 5}2\right)\cdot \left(x-\frac{1+\sqrt 5}2\right) \), we get that the eigenvalues are \(  \lambda_1=\frac{1-\sqrt 5}2 \) and \(  \lambda_2=\frac{1+\sqrt 5}2 \).
+
+We will now find an eigenvector corresponding to the eigenvalue \( \lambda_1 \). Let us denote by \( u=\left[\begin{array}{c}u_1\\u_2\end{array}\right]\) the required eigenvector. Then we have \( -\lambda_1u_1+u_2=0 \) and \( u_1+(1-\lambda_1)u_2=0 \) and we may take \( u= \left[\begin{array}{c}1\\\lambda_1\end{array}\right]=\left[\begin{array}{c}1\\\frac{1-\sqrt 5}2\end{array}\right]\). Similarly, we find \( v= \left[\begin{array}{c}1\\\lambda_2\end{array}\right]=\left[\begin{array}{c}1\\\frac{1+\sqrt 5}2\end{array}\right]\). We have \( A^nu=\lambda_1^nu \) and \( A^nv=\lambda_2^nv \). In order to determine the matrix \( A^n \) it remains to find the vectors \( A^ne_1 \) and \( A^ne_2 \), where \( e_1=\left[\begin{array}{c}1\\0\end{array}\right]\) and \( e_2=\left[\begin{array}{c}0\\1\end{array}\right]\) are the elements of the standard basis of \( \mathbb R^2 \). We will first express \( e_1 \) in terms of \( u \) and \( v \). In order to do so we need to find scalars \( \alpha_1 \) and \( \alpha_2 \) such that \( e_1=\alpha_1u+\alpha_2v \). This gives us the system: \begin{eqnarray*} 1&=&\alpha_1+\alpha_2\\ 0&=&\alpha_1\cdot\frac{1-\sqrt 5}2+\alpha_2\cdot\frac{1+\sqrt 5}2. \end{eqnarray*} Solving the system gives us \(  (\alpha_1,\alpha_2)=\left( \frac{1+\sqrt 5}{2\sqrt 5}, \frac{\sqrt 5-1}{2\sqrt 5} \right) \). We now obtain: \begin{eqnarray*} A^ne_1&=& A^n\left(\alpha_1u+\alpha_2 v\right)=\frac{1+\sqrt 5}{2\sqrt 5}\lambda_1^nu+\frac{\sqrt 5-1}{2\sqrt 5}\lambda_2^nv\\ &=&\frac1{\sqrt 5}\left[\begin{array}{c}\frac{(1+\sqrt 5)\lambda_1^n+(\sqrt 5-1)\lambda_2^n}2\\ \frac{(1+\sqrt 5)\lambda_1^{n+1}+(\sqrt 5-1)\lambda_2^{n+1}}2 \end{array}\right]. \end{eqnarray*} In order to find \( A^ne_2 \) we first need to find the scalars \( \beta_1 \) and \( \beta_2 \) such that \( e_2=\beta_1u+\beta_2v \). The last equation becomes: \begin{eqnarray*} 0&=&\beta_1+\beta_2\\ 1&=&\beta_1\cdot\frac{1-\sqrt 5}2+\beta_2\cdot\frac{1+\sqrt 5}2. \end{eqnarray*} After solving the system we obtain \(  (\beta_1,\beta_2)=\left(-\frac1{\sqrt 5},\frac1{\sqrt 5}\right) \). Then we have \begin{eqnarray*} A^ne_2&=& A^n\left(\beta_1u+\beta_2 v\right)=-\frac1{\sqrt 5}\lambda_1^nu+\frac1{\sqrt 5}\lambda_2^nv\\ &=&\frac1{\sqrt 5}\left[\begin{array}{c}\lambda_2^n-\lambda_1^n\\ \lambda_2^{n+2}-\lambda_1^{n+1} \end{array}\right]. \end{eqnarray*} Therefore \begin{eqnarray*} A^n&=& \frac1{\sqrt 5}\left[\begin{array}{cc}\frac{(1+\sqrt 5)\lambda_1^n+(\sqrt 5-1)\lambda_2^n}2&\lambda_2^n-\lambda_1^n\\ \frac{(1+\sqrt 5)\lambda_1^{n+1}+(\sqrt 5-1)\lambda_2^{n+1}}2&\lambda_2^{n+2}-\lambda_1^{n+1} \end{array}\right], \quad\quad \mbox{and}\quad\quad \left[\begin{array}{c}F_n\\G_n\end{array}\right]=A^n\left[\begin{array}{c}0\\1\end{array}\right]= \frac1{\sqrt 5}\left[\begin{array}{c}\lambda_2^n-\lambda_1^n\\\lambda_2^{n+1}-\lambda_1^{n+1}\end{array}\right]. \end{eqnarray*} Thus \[ F_n=\frac1{\sqrt 5}\left(\frac{1+\sqrt 5}2\right)^n-\frac1{\sqrt 5}\left(\frac{1-\sqrt 5}2\right)^n.\]
+
+In the next example we treat the recursive system of equations whose matrix does not have a basis of eigenvectors. This is an introductory example to Jordan forms of matrices.
+
+\begin{exmp}
+Consider the matrix \( A=\left[\begin{array}{cc}4&1\\-1&2\end{array}\right]\) and the following system of equations: \begin{eqnarray*} x_{n+1}&=&4x_n+y_n\\ y_{n+1}&=&-x_n+2y_n, \end{eqnarray*} with the initial conditions \( x_0=2 \), \( y_0=5 \).
+
+    (a) Prove that \( A \) has only one eigenvalue \( \lambda \) and determine \( \lambda \).
+
+    (b) Find an eigenvector \( u \) corresponding to \( \lambda \).
+
+    (c) Does there exist an eigenvector \( w \) of \( A \) such that \( u \) and \( w \) are not scalar multiples of each other?
+
+    (d) Find a vector \( v \) such that \( Av=\lambda v+u \). Here \( u \) and \( \lambda \) are the eigenvector and the eigenvalue from the previous parts of the problem.
+
+    (e) Determine the matrix \( A^n \).
+
+    (f) Find the closed formulas for \( x_n \) and \( y_n \).
+\end{exmp}
+
+Hide solution
+
+    (a) The characteristic polynomial of \( A \) is \( \varphi_A(x)=(4-x)(2-x)+1=x^2-6x+9=(x-3)^2 \), hence \( \lambda=3 \) is the only eigenvalue of \( A \).
+
+    (b) We need to find \( u=\left[\begin{array}{c} u_1\\u_2\end{array}\right]\) such that \( Au=3u \). This gives us the following system of equations: \begin{eqnarray*} u_1+u_2&=&0\\ -u_1-u_2&=&0, \end{eqnarray*} and each eigenvector of \( A \) must satisfy \( u=\left[\begin{array}{c} t\\-t\end{array}\right]\) for \( t\in\mathbb R \). We can take \( u=\left[\begin{array}{c} 1\\-1\end{array}\right]\).
+
+    (c) Such \( w \) does not exist because each eigenvector \( w \) of \( A \) is of the form \( w=t\left[\begin{array}{c} 1\\-1\end{array}\right]=tu\).
+
+    (d) Let us denote \( v=\left[\begin{array}{c} v_1\\v_2\end{array}\right]\). We will find \( v_1 \) and \( v_2 \). The numbers \( v_1 \) and \( v_2 \) must satisfy the following system of equations: \begin{eqnarray*} v_1+v_2&=&1\\ -v_1-v_u&=&-1. \end{eqnarray*} We can take \( v=\left[\begin{array}{c} 1\\0\end{array}\right]\).
+
+    (e) Since the vectors \( u \) and \( v \) are linearly independent it suffices to find \( A^nu \) and \( A^nv \). Clearly, \( A^nu=\lambda^nu=3^nu \), and \begin{eqnarray*} A^nv&=& A^{n-1}(Av)=A^{n-1}\left(\lambda v+u\right)=\lambda A^{n-1}v + A^{n-1}u=\lambda A^{n-1}v+\lambda^{n-1}u\\ &=& \lambda A^{n-2}\left(Av\right)+\lambda^{n-1}u=\lambda A^{n-2}\left(\lambda v+u\right)+\lambda^{n-1}u=\lambda^2 A^{n-2}v +2\lambda^{n-1}u\\ &\vdots&\\ &=&\lambda^nv+n\lambda^{n-1}u=\left[\begin{array}{c}3^n+n3^{n-1}\\ -n3^{n-1}\end{array}\right]. \end{eqnarray*} We now need to find \( A^n\left[\begin{array}{c} 1\\0\end{array}\right]\) and \( A^n\left[\begin{array}{c} 0\\1\end{array}\right]\). We have already found that \( A^n\left[\begin{array}{c} 1\\0\end{array}\right]=\left[\begin{array}{c}3^n+n3^{n-1}\\ -n3^{n-1}\end{array}\right]\). In order to find the other vector we first express \( \left[\begin{array}{c} 0\\1\end{array}\right]\) in terms of \( u \) and \( v \): \( \left[\begin{array}{c} 0\\1\end{array}\right]=v-u\), hence: \begin{eqnarray*} A^n\left[\begin{array}{c} 0\\1\end{array}\right]&=&A^nv-A^nu=\left[\begin{array}{c}3^n+n3^{n-1}\\ -n3^{n-1}\end{array}\right]- \left[\begin{array}{c}3^n\\ -3^n\end{array}\right]=\left[\begin{array}{c}n3^{n-1}\\ 3^n-n3^{n-1}\end{array}\right]. \end{eqnarray*} Thus: \[A^n=\left[\begin{array}{cc} 3^n+n3^{n-1} & n3^{n-1}\\ -n3^{n-1} & 3^n-n3^{n-1}\end{array}\right]. \]
+
+    (f) We solve the recursive system of equations by first expressing it in the form \( \left[\begin{array}{c}x_{n+1}\\y_{n+1}\end{array}\right]=A\left[\begin{array}{c}x_{n}\\y_{n}\end{array}\right]\). In the same way as in Example 3 we conclude that \( \left[\begin{array}{c}x_{n}\\y_{n}\end{array}\right]= A^n\left[\begin{array}{c}x_{0}\\y_{0}\end{array}\right]\), thus: \[\left[\begin{array}{c}x_{n}\\y_{n}\end{array}\right]= \left[\begin{array}{cc} 3^n+n3^{n-1} & n3^{n-1}\\ -n3^{n-1} & 3^n-n3^{n-1}\end{array}\right]\cdot \left[\begin{array}{c}2\\5\end{array}\right]=\left[\begin{array}{c}2\cdot 3^n+7n\cdot 3^{n-1}\\5\cdot 3^n-7n\cdot 3^{n-1}\end{array}\right],\] which is equivalent to: \begin{eqnarray*} x_n&=&2\cdot 3^n+7n\cdot 3^{n-1}\\ y_n&=&5\cdot 3^n-7n\cdot 3^{n-1}. \end{eqnarray*}
+
+Remark. The vectors \( u \) and \( v \) from previous example form a basis called Jordan basis for the matrix \( A \). 
+
+\end{document}

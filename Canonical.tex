@@ -1,0 +1,411 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm}                % better theorem environments
+\usepackage{amsthm,amssymb}
+\usepackage{mdwtab,booktabs}
+\usepackage{pifont}
+
+\usepackage{cleveref}
+% various theorems, numbered by section
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+\begin{document}
+\title{Canonical forms}
+\author{Miliyon T.\\(Dr. Tilahun A.)}
+\date{August 11, 2015}
+
+\maketitle
+\section{Smith canonical form}
+
+Let $A$ be an $m\times n$ matrix over $F[x]$ and $k\leq\min\{m,k\}$. Choose arbitrary $k$ column and $k$ rows of $A$. There are $\binom m k \binom n k$ matrices of such type.
+
+\begin{defn}
+The determinant of any of the above matrices is called a $k^{th}$ \textbf{order minor}.
+\end{defn}
+Let's look at the following example
+
+\begin{exmp}
+Find a Smith canonical form of a matrix $A$.
+
+$$
+  A= \left(
+    \begin{matrix}
+      x & 1 & 0 \\
+      0 & x & 1 \\
+      2 & 3 & x-1
+    \end{matrix}
+    \right)
+$$
+Let $d_k(x)$ be the $\gcd$ of the $k^{th}$ order minor of $A$, for $k=1,2,3$. Now,
+\begin{align*}
+d_1(x) &=\gcd(x,1,0,2,3,x-1)=1\\
+d_2(x) &=\gcd\biggl( \left|
+    \begin{matrix}
+      x & 1  \\
+      0 & x  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      x & 0  \\
+      0 & 1  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      1 & 0  \\
+      x & 1  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      0 & x  \\
+      2 & 3  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      0 & 1  \\
+      2 & x-1  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      x & 1  \\
+      3 & x-1  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      x & 1  \\
+      2 & 3  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      x & 0  \\
+      2 & x-1  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      1 & 0  \\
+      3 & x-1  \\
+    \end{matrix}
+    \right|
+     \biggl)=1\\
+d_3(x)&=|A|=x^3-x^2-3x+2
+\end{align*}
+
+Thus the invariant factors $f_1,f_2$ and $f_3$ are given
+$$f_1=d_1(x)=1, \qquad f_2=\frac{d_2(x)}{d_1(x)}=d_2(x)=1, \qquad f_3=d_3(x)=x^3-x^2-3x+2$$
+
+Hence $B$ the Smith canonical form of $A$ is
+
+$$
+  A= \left(
+    \begin{matrix}
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & d_3(x)
+    \end{matrix}
+    \right)
+$$
+\end{exmp}
+
+\begin{defn}
+Let $A$ be an $n\times n$ matrix in $F$, then $xI_n-A$ is an $n\times n$ matrix in $F[x]$. The \textbf{invariant factors} of $xI_n-A$ are called the \textbf{similarity invariant factors} of $A$.
+\end{defn}
+
+\begin{rem}
+\begin{enumerate}
+  \item Let $A$ be a square matrix of order $n$ in $F$, then $d_n$ of $(xI-A)$ is $\chi_A(x)$.
+  \item The \textbf{minimal polynomial} $m_A(x)=f_n$, where $f_n$ is the highest order invariants of $A$.
+\end{enumerate}
+\end{rem}
+
+\begin{exmp}\label{example2}
+Let
+$$
+  A= \left(
+    \begin{matrix}
+      6 & 2 & -2 \\
+      -2 & 2 & 2 \\
+      2 & 2 & 2
+    \end{matrix}
+    \right)
+$$
+Then
+$$
+  xI-A= \left(
+    \begin{matrix}
+      x-6 & -2 & 2 \\
+      2 & x-2 & -2 \\
+      -2 & -2 & x-2
+    \end{matrix}
+    \right)
+$$
+$$d_1(x)=1, \qquad d_2(x)=x-4, \qquad d_3(x)=(x-2)(x-4)^2$$
+Thus the invariant factors of $A$ are
+$$d_1(x)=1=f_1,\qquad \frac{d_2(x)}{d_1(x)}=x-4=f_2, \qquad \frac{d_3(x)}{d_2(x)}=(x-2)(x-4)=f_3$$
+\end{exmp}
+
+\section{Rational canonical form}
+
+\subsection{Invariant factors}
+Consider the following monic polynomial
+\begin{align}
+f(x)=x^n+a_{n-1}x^{n-1}+\cdot\cdot\cdot+a_1x+a_0
+\end{align}
+\begin{defn}
+The companion matrix of $f$ which is denoted by $C(f)$ is given as follows
+\begin{align}
+  C(f)= \left(
+    \begin{matrix}
+      0 & 1 &   \cdots & 0 \\
+      0 & 0 &   \cdots & 0 \\
+      \vdots & \vdots &   \ddots & \vdots \\
+      0 & 0 &   \cdots & 1 \\
+      -a_0 & -a_1 & \cdots & -a_{n-1}
+    \end{matrix}
+    \right)
+\end{align}
+\end{defn}
+
+\begin{exmp}
+Find the companion matrix of
+\begin{enumerate}
+  \item $f(x)=x+a_0$
+  \item $f(x)=x^2+a_1x+a_0$
+  \item $f(x)=x^3+a_2x^2+a_1x+a_0$
+\end{enumerate}
+\textbf{Solution}:
+\begin{enumerate}
+  \item $C(f)=a_0$
+  \item $C(f)=\left(
+    \begin{matrix}
+      0 & 1  \\
+      -a_0 & -a_1
+    \end{matrix}
+    \right)$
+  \item $C(f)=\left(
+    \begin{matrix}
+      0 & 1 & 0 \\
+      0 & 0 & 1 \\
+      -a_0 & -a_1 & -a_2
+    \end{matrix}
+    \right)$
+\end{enumerate}
+\end{exmp}
+
+\begin{thm}
+Let $f(x)=x^n+a_{n-1}x^{n-1}+\cdot\cdot\cdot+a_1x+a_0$, then the \textbf{characteristic polynomial} and the \textbf{minimal polynomial} of $C(f)$ are both equal to $f$.
+\end{thm}
+\begin{proof}
+
+\[xI-C(f)=
+\begin{pmatrix}
+      x & -1 & 0   &\cdots & 0 \\
+      0 & x & -1  &\cdots & 0 \\
+      \vdots & \vdots & \vdots&  \ddots & \vdots \\
+      0 & 0 & 0   &\cdots & -1 \\
+      a_0 & a_1 & a_2 & \cdots & a_{n-1}
+    \end{pmatrix}
+\xrightarrow
+ [% below
+  \substack{c_1+x^5c_6\\ \vdots\\c_1+x^{n-1}c_n}
+ ]
+ {% above
+  \substack{c_1+xc_2\\c_1+x^2c_3\\c_1+x^3c_4\\c_1+x^4c_5}
+ }
+\begin{pmatrix}
+      0 & -1 & 0   &\cdots & 0 \\
+      0 & x & -1  &\cdots & 0 \\
+      \vdots & \vdots & \vdots&  \ddots & \vdots \\
+      0 & 0 & 0   &\cdots & -1 \\
+      f(x) & a_1 & a_2 & \cdots & a_{n-1}
+    \end{pmatrix}
+\]
+\end{proof}
+
+\begin{defn}
+Let $A$ be a square matrix of order $n$ and $f_1,f_2,...,f_r$ be the \textbf{non trivial} similarity invariants of $A$.
+Let $c_i=C(f_i),\qquad i=1,2,...,r$.\\
+Then $B=Diag(c_1,c_2,...,c_r)$ is called the \textbf{Rational canonical form} of all matrices similar to $A$.
+\end{defn}
+\begin{exmp}
+Find the Rational canonical form (RCF) of the matrix $A$ in example (\ref{example2})\\
+\textbf{Solution:} The non trivial invariant factors of $A$ are: $f_1(x)=x-4, f_2(x)=x^2-6x+8$ then
+$$C(f_1)=(4),\qquad C(f_2)=\left(
+    \begin{matrix}
+      0 & 1  \\
+      -8 & 6
+    \end{matrix}
+    \right)$$
+Hence the RCF of $A$ is a matrix $B$ which is written
+$$B=\left(
+    \begin{matrix}
+      4 & 0 & 0 \\
+      0 & 0 & 1\\
+      0 & -8& 6
+    \end{matrix}
+    \right)$$
+\end{exmp}
+\subsection{Elementary divisors}
+Let $A$ be a square matrix of order $n$ in $F$ and $\chi_A(x)$ characteristic polynomial of $A$.\\
+Let $f_1,f_2,...,f_k$ be the non trivial similarity invariants of $A$.\\
+Suppose $\chi_A(x)=f_1f_2\cdot\cdot\cdot f_r=p_1^{\alpha_1}p_2^{\alpha_2}\cdot\cdot\cdot p_k^{\alpha_k}$ where $p_1,p_2,...,p_k$ are distinct monic polynomials that are irreducible over $F$ and each $\alpha_i$ is a positive integer.
+
+\begin{align}
+\chi_A(x)=f_1f_2\cdot\cdot\cdot f_r=p_1^{\alpha_1}p_2^{\alpha_2}\cdot\cdot\cdot p_k^{\alpha_k}
+\end{align}
+$\Rightarrow f_i=p_1^{\alpha_{i1}}p_2^{\alpha_{i2}}\cdot\cdot\cdot p_k^{\alpha_{ik}}\qquad (i=1,2,...,r).$
+
+
+Since $f_i|f_{i+1}$, then $\alpha_{(i+1)j} \geq \alpha_{ij}$
+
+\begin{rem}
+$\alpha_{ij}$ can be zero but if $a_{ij}$ is positive, then $\alpha_{(i+1)}$ is also positive.
+\end{rem}
+
+\begin{defn}
+The polynomials $p_i^{\alpha_{ij}}$ that appear in the similarity invariants of $A$, with $\alpha_{ij}>0$ are called \textbf{elementary divisors} of $A$ over $F$.
+\end{defn}
+
+\begin{rem}
+The list of elementary divisors may include duplications.
+\end{rem}
+
+
+\begin{exmp}
+Find the elementary divisors of
+$$
+  A= \left(
+    \begin{matrix}
+      3 & 1 &-2 \\
+     -1 & 0 & 5 \\
+     -1 &-1 & 4
+    \end{matrix}
+    \right)
+$$
+\textbf{Solution}:
+\begin{align*}
+d_1&=\gcd(1,-1,2,-5,x,x-3,x-4)=1\\
+d_2&=\gcd\biggl( \left|
+    \begin{matrix}
+      x-3 & -1  \\
+      1 & x  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      x-3 & 2  \\
+      1 & -5  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      -1 & 2  \\
+      x & -5  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      1 & x  \\
+      1 & 1  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      1 & -5  \\
+      1 & x-4  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      x & -5  \\
+      1 & x-4  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      x-3 & -1  \\
+      1 & 1  \\
+    \end{matrix}
+    \right|,\\
+    &\left|
+    \begin{matrix}
+      x-3 & 2  \\
+      1 & x-4  \\
+    \end{matrix}
+    \right|,
+    \left|
+    \begin{matrix}
+      -1 & 2  \\
+      1 & x-4  \\
+    \end{matrix}
+    \right|
+     \biggl)=1\\
+d_3&=|IX-A|=x^3-7x^2+16x-12=(x-3)(x-2)^2
+\end{align*}
+The similarity invariants are
+$$f_1=d_1=1, \qquad f_2=\frac{d_2}{d_1}=1, \qquad f_3=\frac{d_3}{d_2}=(x-3)(x-2)^2$$
+The elementary divisors are
+  $$x-3, (x-2)^2$$
+\end{exmp}
+\section{Normal canonical form}
+
+\begin{defn}
+Let $A$ be a square matrix of order $n$ over $F$ and $g_1,g_2,...,g_r$ be its elementary divisors. Let $c_i=C(g_i)$, then the matrix $Diag(c_1,c_2,...,c_r)$ is called \textbf{Normal canonical form} of $A$.
+\end{defn}
+\section{Jordan canonical form}
+Let $A$ be a square matrix of order $n$ over $F$. Suppose the elementary divisors of $A$ are of the form $(x-\lambda_i)^{\alpha_{ij}}, \forall i$. This is  possible if $F$ is algebraically closed field. For $(x-\lambda_j)^{\alpha_{ij}}$, we define the \textbf{Jordan Block} corresponding to the elementary divisor $(x-\lambda_j)^{\alpha_{ij}}$ to be the $\alpha_{ij}\times\alpha_{ij}$ matrix $J_{\alpha_{ij}}(\lambda_j)$ given by
+\begin{align}
+  J_{\alpha_{ij}}(\lambda_j)= \left(
+    \begin{matrix}
+      \lambda_j & 1 & 0 &   \cdots & 0 \\
+      0 & \lambda_j & 1&  \cdots & 0 \\
+      \vdots & \vdots & \vdots &   \ddots & \vdots \\
+      0 & 0 & 0 & \cdots & 1 \\
+      0 & 0 & 0 & \cdots & \lambda_j
+    \end{matrix}
+    \right)
+\end{align}
+
+\begin{exmp}
+If $(x-3)^2$ is an elementary divisor of a square matrix $A$, then the Jordan block of $(x-3)^2$
+\end{exmp}
+
+
+\end{document}

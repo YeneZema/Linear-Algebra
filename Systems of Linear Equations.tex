@@ -1,0 +1,216 @@
+
+%http://www.imomath.com/index.php?options=655&lmm=0
+
+Systems of Linear Equations
+Introduction
+
+Linear algebra is a fundamental tool in mathematics and natural sciences. It begins by studying the systems of linear equations. The subject evolves by polishing the techniques for solving the systems and generalizing them into operator theory.
+
+Many techniques of linear algebra are familiar to students even before they start studying the subject. Thus it is important to emphasize that in order to properly interiorize the concepts, one may be required to abandon his/her favorite methods of solving the systems. The old methods will be replaced by techniques that allow better generalizations in the future.
+
+Let us, for one last time solve a system of two equations in non-linear-algebra-approved ways - using the method of guessing.
+
+Example 1
+
+\begin{eqnarray*} 3x-2y&=&1\\ 4x+3y&=&7. \end{eqnarray*}
+
+    (a) Is it possible to guess the solutions of this system?
+
+    (b) Is guessing a legitimate way of solving the system? What are disadvantages of the method of guessing?
+
+    (c) Can this system be solved in ways other than guessing?
+
+Hide solution
+
+    (a) Yes. The solutions are \( x=1 \) and \( y=1 \). Check! They really work!
+
+    (b) If the system gets more complicated, guessing become more cruel. Some people may think this is fun, so it is controversial on whether this is an advantage or disadvantage.
+
+    However, the bigger problems is answering the question: Is \( (x,y)=(1,1) \) the only pair that solves the system? Just because we guessed this one, it doesn’t mean that there are no other solutions. We would need some sort of mathematical proof that would justify that \( (1,1) \) is the only solution.
+
+    (c) The answer to the last question is yes, of course. There are millions of ways to solve this system without guessing. Try for the last time to solve this in your favorite way. After this text, you will be required to change your the habits of solving the systems, if you have had any particular habits. Any system in the near future will be solved using the Gaussian elimination method.
+
+Definitions
+
+A real linear equation in variables \( x_1 \), \( \dots \), \( x_n \) is any equation of the form \[ a_1x_1+a_2x_2+\cdots+a_nx_n=b,\] where \( a_1 \), \( \dots \), \( a_n \), \( b \) are real numbers. It is called linear because the left side is a linear function of its variables, or in other words, variables are only multiplied by constants and added together. (For example, the function \( \varphi(x_1,x_2,\dots, x_n)=x_1\cdot x_2+7 \) is not a linear function since \( x_1 \) and \( x_2 \) are multiplied.)
+
+A system of linear equations is several linear equations put together. A general form of the system is: \begin{eqnarray*} a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n&=&b_1\\ a_{21}x_1+a_{22}x_2+\cdots+a_{2n}n_x&=&b_2\\ &\vdots&\\ a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n&=&b_m, \end{eqnarray*} where \( a_{11} \), \( \dots \), \( a_{1n} \), \( \dots \), \( a_{m1} \), \( \dots \), \( a_{mn} \), \( b_1 \), \( \dots \), \( b_m \) are real numbers.
+
+A solution to the system is any \( n \)-tuple \( (x_1, \dots, x_n) \) that satisfies each of the \( m \) equations.
+Equivalent systems
+
+Two systems of equations are called equivalent if they have the same solutions.
+Theorem 1
+
+
+Consider the system of equations: \begin{eqnarray*} a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n&=&b_1\\ a_{21}x_1+a_{22}x_2+\cdots+a_{2n}n_x&=&b_2\\ &\vdots&\\ a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n&=&b_m, \end{eqnarray*}
+
+    (a) Let \( i,j\in\{1,2,\dots, m\} \). If the \( i \)-th and the \( j \)-th equation change their positions, the obtained system is equivalent to the original one.
+
+    (b) Let \( i\in\{1,2,\dots, m\} \) and let \( \alpha\neq 0 \) be a real number. Consider the equation \[ \alpha\cdot a_{i1}x_1+\cdots+\alpha\cdot a_{in}x_n=\alpha b_i\quad\quad\quad\quad\quad\quad\quad\quad\quad (\ast_i)\] obtained by multiplying the \( i \)-th equation by \( \alpha \). If the \( i \)-th equation is replaced by \( (\ast_i) \) the obtained system is equivalent to the original one.
+
+    (c) Let \( \alpha \) be any real number and let \( i,j\in\{1,2,\dots, m\} \). Consider the equation \[ \alpha\cdot a_{i1}x_1+\cdots+\alpha\cdot a_{in}x_n=\alpha b_i\quad\quad\quad\quad\quad\quad\quad\quad\quad (\ast_i)\] obtained by multiplying the \( i \)-th equation by \( \alpha \). Consider the equation obtained by adding \( (\ast_i) \) to the \( j \)-th equation: \[ \left(a_{j1}+\alpha a_{i1}\right)x_1+\cdots + \left(a_{jn}+\alpha a_{in}\right)x_n=b_j+\alpha b_i. \quad\quad\quad\quad\quad (\ast\ast_j)\] If the \( j \)-th equation is replaced by \( (\ast\ast_j) \) the obtained system is equivalent to the original one.
+
+Hide proof
+
+    (a) Assume that \( (x_1, \dots, x_n) \) is a solution to the original system. Then this \( n \)-tuple is going to be the solution to each of the equations of the new system because all equations are the same.
+
+    Similarly, if \( (x^{\prime}_1, \dots, x^{\prime}_n) \) is a solution to the new system we can easily see that this \( n \)-tuple satisfies each of the equations of the original system. This completes the proof that the systems are equivalent.
+
+    (b) Assume that \( (x_1, \dots, x_n) \) is a solution to the original system. We need to prove that \( (x_1,\dots, x_n) \) satisfies each of the equations of the new system. All the equations of the new system are the same as the equations of the old system, except for \( (\ast_i) \). We only need to verify that \( (x_1, \dots, x_n) \) satisfies \( (\ast_i) \). This is obvious, since \( (x_1, \dots, x_n) \) satisfy \( a_{i1}x_1+\cdots+a_{in}x_n=b_i \).
+
+    Assume now that \( (x^{\prime}_1, \dots, x^{\prime}_n) \) is a solution to the new system. We need to verify that \( (x^{\prime}_1, \dots, x^{\prime}_n) \) satisfies each of the equations of the old system. The only equation that differs is \( a_{i1}x^{\prime}_1+\cdots+a_{in}x^{\prime}_n=b_i \) which is satisfied because it is obtained by multiplying both sides of \( (\ast_i) \) by \( \frac1{\alpha} \).
+
+    (c) Assume that \( (x_1, \dots, x_n) \) is a solution to the original system. Since it satisfies both \( i \)-th and \( j \)-th equation, it must satisfy \( (\ast\ast_j) \). All other equations of the new system are the same to the respective equations in the old system.
+
+    Assume that \( (x_1^{\prime}, \dots, x_n^{\prime}) \) is a solution to the new system. We need to prove that \( a_{j1}x^{\prime}_1+\cdots + a_{jn}x^{\prime}_n=b_j \). Since \( (x^{\prime}_1, \dots, x^{\prime}_n) \) satisfies \( (\ast\ast_j) \) and \( (\ast_i) \) it must satisfy the equation obtained as the difference of these two. This completes the proof.
+
+Gaussian elimination
+
+The previous theorem is the cornerstone of majority of methods for solving systems of linear equations. In each step a system is transformed to an equivalent one that is in some way simpler than the original. After several steps one hopes to obtain the trivial system.
+
+Let us first start from explaining the meaning of the expression trivial system. This is one such system: \begin{eqnarray*} x&=&8\\ y&=&9\\ z&=&21.\end{eqnarray*} Looking at the definition, this is indeed a system of equations. It has all the ingredients: variables and equations. This is a trivial system, or solved system. A little bit more complicated system is the following: \begin{eqnarray*} 2x-y+z&=&28\\ y+z&=&30\\ z&=&21. \end{eqnarray*} This system is easy to solve if we go backwards. From the last equation we have \( z=21 \), and this is sufficient to determine \( y \) from the second, giving us \( y=9 \). Now we can figure out \( x \) from the first equation: \( x=8 \). The last system is called a system in a row echelon form, or a system in an upper triangular form. Word echelon comes from French and means ladder or staircase.
+
+The method of Gaussian elimination aims to reduce the system in the row-echelon form. The goal is for the last equation to have only one variable, thus making it trivial to solve. Then once we have the variable from the last equation, the preceding equation would ideally have only one more variable allowing us to find it if we know the last one.
+
+In order to put the system in the row-echelon form we will first fix one variable in one of the equations, and using the transformations from Theorem 1 obtain an equivalent system in which that variable is removed from every other equation.
+
+As an outline of the method we will consider the following system of three equations with three variables: \begin{eqnarray*} 2x-2y+8z&=&6\\ 6x+7y-9z&=&11\\ -4x+11y-3z&=&15. \end{eqnarray*}
+
+Let us consider the variable \( x \) in the first equation. We will put the box around it and eliminate it from the other two equations: Here is how the system looks with a box: \begin{eqnarray*} 2\begin{array}{|c|}\hline x\\\hline\end{array}-2y+8z&=&6\\ 6x+7y-9z&=&11\\ -4x+11y-3z&=&15. \end{eqnarray*} We multiply the first equation by \( -3 \), add it to the second, and use the obtained equation to replace the second in the system. This will give us an equivalent system. As a part of the same step, we will multiply the first equation by \( 2 \), add it to the third, and use the obtained equation to replace the third in the system. We arrive to the following system that is equivalent to the original one: \begin{eqnarray*} 2x-2y+8z&=&6\\ 13y-33z&=&-7\\ 7y+13z&=&27. \end{eqnarray*} We now concentrate on the last two equations that are forming a system with two variables. We will not write the first equation until the very end of the problem. A box in the equation also serves as a mark that the equation is going to be a part of any subsequent system. \begin{eqnarray*} 13y-33z&=&-7\\ 7y+13z&=&27. \end{eqnarray*} Let us now put the box around \( y \) variable in the first equation: \begin{eqnarray*} 13\begin{array}{|c|}\hline y\\\hline\end{array}-33z&=&-7\\ 7y+13z&=&27. \end{eqnarray*} We multiply the first equation by \( -\frac7{13} \) and add it to the second. We get: \begin{eqnarray*} \frac{400}{13}z&=&\frac{400}{13}. \end{eqnarray*} We put a box around \( z \): \begin{eqnarray*} \frac{400}{13}\begin{array}{|c|}\hline z\\\hline\end{array}&=&\frac{400}{13}. \end{eqnarray*} Solving for \( z \) yields \( z=1 \).
+
+Now we look at the preceding equation with box and solve it for \( y \). We get \( y=2 \). Finally, the first equation with box gives us \( x=1 \).
+Examples
+Example 2
+
+
+Find all triples \( (x,y,z) \) for which the following three equations are satisfied: \begin{eqnarray*} 3x-y-2z&=&7\\ 5x+4y-z&=&16\\ -2x+y+3z&=&-9 \end{eqnarray*}
+
+Hide solution
+
+We first select one of the variable in one of the equations, and eliminate that variable from the other two equations. Although any variable would work for this initial selection, we will pick \( y \) variable from the first equation. We will put a box around that variable and obtain the system that looks like this:
+\begin{eqnarray*} 3x- \begin{array}{|c|}\hline y\\\hline \end{array}-2z&=&7\\ 5x+4y-z&=&16\\ -2x+y+3z&=&-9 \end{eqnarray*}
+
+We now concentrate on the equation that contains box, i.e. the first equation. We multiply the first equation by \( 4 \) and add it to the second to obtain: \[ 17x-9z=44.\] Multiplying the first equation by \( 1 \) and adding it to the third yields: \( x+z=-2 \). Let us write the newest two equations: \begin{eqnarray*} 17x -9z&=&44\\ x+z&=&-2 \end{eqnarray*}
+
+We can solve this system for \( x \) and \( z \). We will use again the method of elimination. First, we select one of the variables to put the box around it. Let us select \( z \) from the second equation. We obtain the system: \begin{eqnarray*} 17x -9z&=&44\\ x+\begin{array}{|c|}\hline z \\ \hline\end{array}&=&-2 \end{eqnarray*} We wish to eliminate \( z \) from the first equation. This can be done by multiplying the boxed equation by \( 9 \) and adding it to the first one. We obtain the equation \[ 26x=26.\] We have a system of one equation with one variable. We will solve this again by using the method of elimination. We pick one of the variables to put the box around it. There is only one variable to pick: \( x \). We obtain the equation: \begin{eqnarray*} \begin{array}{|c|}\hline x\\ \hline\end{array}&=&26 \end{eqnarray*} In total, we have exactly \( 3 \) boxes. We will now look only at the equations with box to solve for our variables. From the last equation with boxes we obtain \( x=1 \). We plugh this value of \( x \) in the second to last equation with box. That equation allows us to determine the variable \( z \). We do this by evaluating \( z=-2-x=-2-1=-3 \). We finally look at the first equation with box to determine the value for \( y \). We have \( -y=7+2z-3x=7-6-3=-2 \) and \( y=2 \).
+
+Therefore we obtained that if \( (x,y,z) \) solve the system we must have \( (x,y,z)=(1,2,-3) \).
+
+Example 3
+
+
+Find all sequences \( (x,y,z,t) \) for which the following two equations are satisfied: \begin{eqnarray*} 2x-3y+5z-2t&=&8\\ 5x+7y-2z-5t&=&49 \end{eqnarray*}
+
+Hide solution
+
+The first step is to select one of the variables from one of the equations and eliminate it from the other equation. Let us pick the variable \( x \) from the first equation. We put the box around \( x \) and obtain the following system:
+\begin{eqnarray*} 2\begin{array}{|c|}\hline x\\ \hline\end{array}-3y+5z-2t&=&8\\ 5x+7y-2z-5t&=&49 \end{eqnarray*}
+
+In order to eliminate \( x \) from the second equation we multiply the first equation by \( -\frac{5}2 \) and add it to the second to obtain: \begin{eqnarray*} \frac{29}2y-\frac{29}2z&=&29 \end{eqnarray*} We now select one of the variables from the equation to put the box around - say \( y \). Then we get \begin{eqnarray*} \frac{29}2\begin{array}{|c|}\hline y\\\hline\end{array}-\frac{29}2z&=&29 \end{eqnarray*} We have obtained two equations with boxes. The variables that have boxes are \( x \) and \( y \). The unboxed variables can have any value. For each choice for \( z \) and \( t \) there exists unique values for \( x \) and \( y \). The value for \( y \) is obtained from the last equation with box, and it is: \[ y=2+z.\] Plugging this value for \( y \) in the first equation enables us to solve it for \( x \): \[ x=\frac12\left(8+2t-5z+3y\right)=\frac12\left(8+2t-5z+3(2+z)\right)=7+t-z.\]
+
+Therefore we obtained that if \( (x,y,z,t) \) solve the system we must have \( x=7+t-z \) and \( y=2+z \).
+
+Matrix of the system
+
+In this section we will introduce matrices as a way to represent systems of equations in a more compact form. We will study the matrices instead of systems, and we will be able to conclude wether systems are solvable just by looking at their matrices. It will turn out that there are operations on matrices that correspond to Gaussian elimination that we studied before.
+
+We will start by the definition of the matrix of the system.
+
+Definition 1 (Coefficent matrix and augmented matrix)
+
+
+Consider the system of equations: \begin{eqnarray*} a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n&=&b_1\\ a_{21}x_1+a_{22}x_2+\cdots+a_{2n}n_x&=&b_2\\ &\vdots&\\ a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n&=&b_m, \end{eqnarray*} The coefficient matrix (or matrix of coefficients) \( M \) of the above system is the following two-dimensional array of numbers: \begin{eqnarray*} M&=&\left[\begin{array}{cccc}a_{11}&a_{12}&\cdots&a_{1n}\\ a_{21}&a_{22}&\cdots&a_{2n}\\ &&\vdots&\\ a_{m1}&a_{m2}&\cdots&a_{mn}\end{array}\right]. \end{eqnarray*} The augmented matrix \( M_A \) of the above system is the following two-dimensional array of numbers: \begin{eqnarray*} M_A&=&\left[\begin{array}{ccccc}a_{11}&a_{12}&\cdots&a_{1n}&b_1\\ a_{21}&a_{22}&\cdots&a_{2n}&b_2\\ &&\vdots&&\\ a_{m1}&a_{m2}&\cdots&a_{mn}&b_m\end{array}\right]. \end{eqnarray*}
+
+We will now provide several examples of systems of equations and their corresponding coefficient matrices and augmented matrices.
+
+Example 4
+
+Consider the system of equations. \begin{eqnarray*} 3x-2y&=&1\\ 4x+3y&=&7. \end{eqnarray*}
+
+    (a) Determine its matrix of coefficients.
+
+    (b) Determine its augmented matrix.
+
+Hide solution
+
+    (a) The coefficient matrix is \begin{eqnarray*} M&=&\left[\begin{array}{cc}3&-2\\ 4&3\end{array}\right].\end{eqnarray*}
+
+    (b) The augmented matrix is \begin{eqnarray*} M&=&\left[\begin{array}{ccc}3&-2&1\\ 4&3&7\end{array}\right].\end{eqnarray*}
+
+Example 5
+
+Consider the system of equations. \begin{eqnarray*} -2y+z&=&-5\\ -11x+17y&=&0. \end{eqnarray*}
+
+    (a) Determine its matrix of coefficients.
+
+    (b) Determine its augmented matrix.
+
+Hide solution
+
+    (a) The coefficient matrix is \begin{eqnarray*} M&=&\left[\begin{array}{ccc}0&-2&1\\ -11&17&0\end{array}\right].\end{eqnarray*}
+
+    (b) The augmented matrix is \begin{eqnarray*} M&=&\left[\begin{array}{cccc}0&-2&1&-5\\ -11&17&0&0\end{array}\right].\end{eqnarray*}
+
+Recall that we said that two systems of equations are equivalent, if they have the same solutions. We now extend that definition to matrices: Two matrices are said to be equivalent if they are augmented matrices of two equivalent systems.
+Theorem 2
+
+
+Consider the matrix \begin{eqnarray*} M_A&=&\left[\begin{array}{ccccc}a_{11}&a_{12}&\cdots&a_{1n}&b_1\\ a_{21}&a_{22}&\cdots&a_{2n}&b_2\\ &&\vdots&&\\ a_{m1}&a_{m2}&\cdots&a_{mn}&b_m\end{array}\right]. \end{eqnarray*}
+
+    (a) Let \( i,j\in\{1,2,\dots, m\} \). If the \( i \)-th and the \( j \)-th row change their positions, the obtained matrix is equivalent to the original one.
+
+    (b) Let \( i\in\{1,2,\dots, m\} \) and let \( \alpha\neq 0 \) be a real number. Consider the row \[ \mathbf{R_{i,\rightarrow}}=\left[\alpha\cdot a_{i1},\cdots,\alpha\cdot a_{in} , \alpha b_i\right]\] obtained by multiplying the \( i \)-th row of \( M_A \) by \( \alpha \). If the \( i \)-th row of \( M_A \) is replaced by \( \mathbf{R_{i,\rightarrow}} \) the obtained matrix is equivalent to the original one.
+
+    (c) Let \( \alpha \) be any real number and let \( i,j\in\{1,2,\dots, m\} \). Consider the row \[ \mathbf{R_{i,\rightarrow}}=\left[\alpha\cdot a_{i1},\cdots,\alpha\cdot a_{in},\alpha b_i\right]\ \] obtained by multiplying the \( i \)-th row of \( M_A \) \( \alpha \). Consider the following row obtained by adding \( \mathbf{R_{i,\rightarrow}} \) to the \( j \)-th row of \( M_A \): \[ \mathbf{R^{\prime}_{i,\rightarrow}}=\left[\left(a_{j1}+\alpha a_{i1}\right),\cdots,\left(a_{jn}+\alpha a_{in}\right),b_j+\alpha b_i\right] .\] If the \( j \)-th two is replaced by \( \mathbf{R^{\prime}_{j,\rightarrow}} \) the obtained matrix is equivalent to the original one.
+
+Hide proof
+
+The theorem is a direct consequence of Theorem 1.
+
+Row reduction and echelon forms
+
+Recall that the system of equation is in a row-echelon form if the last equation contains only \( x_n \) variable; the second-to last only \( x_n \) and \( x_{n-1} \); the third equation from the bottom only \( x_n \), \( x_{n-1} \), and \( x_{n-2} \); etc. Such system is as good as the solved one. The matrix corresponding to such a system is called a matrix in a row-echelon form. The precise definition is this:
+Definition 2 (echelon form of a matrix)
+
+
+A matrix is in echelon form (or row echelon form) if it satisfies the following two properties:
+
+    (i) Except for the first one, each row starts with consecutive zeroes.
+
+    (ii) Each row starts with more zeroes than the row above it.
+
+Row echelon form is also called the upper triangular form. Few examples of matrices in row echelon forms can be visualized as follows: \begin{eqnarray*} \left[\begin{array}{ccccc} \star & \ast & \ast &\ast &\ast\\ 0&\star&\ast & \ast &\ast\\ 0&0&0&0&0\\ 0&0&0&0&0 \end{array}\right]\,, \quad \left[\begin{array}{cccccc} 0&\star & \ast & \ast &\ast &\ast\\ 0&0&\star&\ast & \ast &\ast\\ 0&0&0&0&\star&\ast\\ 0&0&0&0&0&\star \end{array}\right]\,, \quad \left[\begin{array}{cccccc} \star & \ast & \ast &\ast &\ast&\ast\\ 0&0&\star&\ast & \ast &\ast\\ 0&0&0&0&\star&\ast\\ 0&0&0&0&0&\star\\ \end{array}\right]\,. \end{eqnarray*}
+
+Each symbol \( \ast \) above can be replaced by any number, while each occurrence of \( \star \) be replaced by any non-zero number.
+
+We were solving the systems of linear equations by reducing the systems to the row echelon form. We will now see that in an analogous way we can reduce the matrix in a row echelon form.
+
+Example 6
+
+
+Find a row echelon form for the matrix: \begin{eqnarray*} M&=&\left[\begin{array}{cccc}2&-2&8&6\\ 6&7&-9&11\\ -4&11&3&15\end{array}\right]\,. \end{eqnarray*}
+
+Hide solution
+
+Let us consider the value one at the position \( (1,1) \). We will put the box around it and eliminate the first entry from the second and the third row. Here is how the matrix looks with a box: \begin{eqnarray*} M&=& \left[\begin{array}{cccc} \begin{array}{|c|}\hline 2\\\hline\end{array} &-2&8&6\\ 6&7&-9&11\\ -4&11&3&15\end{array}\right]\,. \end{eqnarray*} We multiply the first row by \( -3 \), add it to the second, and use the obtained equation to replace the second in the matrix. This will give us an equivalent matrix. As a part of the same step, we will multiply the first row by \( 2 \), add it to the third, and use the obtained equation to replace the third in the matrix. We arrive to the following matrix that is equivalent to the original one: \begin{eqnarray*} M_1&=&\left[\begin{array}{cccc}\begin{array}{|c|}\hline 2\\\hline\end{array}&-2&8&6\\ 0&13&-33&-7\\ 0&7&13&27\end{array}\right]\,. \end{eqnarray*} We now concentrate on the last two rows. Let us now put the box around the number 13 at the position \( (2,2) \) in the matrix: \begin{eqnarray*} M_1&=&\left[\begin{array}{cccc}\begin{array}{|c|}\hline 2\\\hline\end{array}&-2&8&6\\ 0&\begin{array}{|c|}\hline 13\\\hline\end{array}&-33&-7\\ 0&7&13&27\end{array}\right]\,. \end{eqnarray*} We multiply the second row by \( -\frac7{13} \) and add it to the third. We get: \begin{eqnarray*} M_3&=&\left[\begin{array}{cccc}\begin{array}{|c|}\hline 2\\\hline\end{array}&-2&8&6\\ 0&\begin{array}{|c|}\hline 13\\\hline\end{array}&-33&-7\\ 0&0&\frac{400}{13}&\frac{400}{13}\end{array}\right]\,. \end{eqnarray*} We put a box around the position \( (3,3) \): \begin{eqnarray*} M_3&=&\left[\begin{array}{cccc}\begin{array}{|c|}\hline 2\\\hline\end{array}&-2&8&6\\ 0&\begin{array}{|c|}\hline 13\\\hline\end{array}&-33&-7\\ 0&0&\begin{array}{|c|}\hline \frac{400}{13}\\\hline\end{array}&\frac{400}{13}\end{array}\right]\,. \end{eqnarray*} The matrix \( M_3 \) is equivalent to \( M \) and it is in the row echelon form.
+
+Reduced echelon form
+
+Definition 3 (reduced echelon form)
+
+
+A matrix is in a reduced echelon form if it is in the echelon form and satisfies the following condition:
+
+In each row the first non-zero entry is equal to 1. All entries above it are equal to zero.
+
+Examples of matrices in reduced echelon forms are given below. \begin{eqnarray*} \left[\begin{array}{ccccc} 1& 0 & \ast &\ast &\ast\\ 0&1&\ast & \ast &\ast\\ 0&0&0&0&0\\ 0&0&0&0&0 \end{array}\right]\,, \quad \left[\begin{array}{cccccc} 0 &1 &0 &\ast &0 &0\\ 0 &0 &1 &\ast &0 &0\\ 0 &0 &0 &0 &1 &0\\ 0 &0 &0 &0 &0 &1 \end{array}\right]\,, \quad \left[\begin{array}{cccccc} 1&\ast & 0 &\ast &0 &0\\ 0&0 &1 &\ast &0 &0\\ 0&0 &0 &0 &1 &0\\ 0&0 &0 &0 &0 &1 \end{array}\right]\,. \end{eqnarray*}
+
+Example 7
+
+
+Find a reduced row echelon form for the matrix: \begin{eqnarray*} M&=&\left[\begin{array}{cccc}2&-2&8&6\\ 6&7&-9&11\\ -4&11&3&15\end{array}\right]\,. \end{eqnarray*}
+
+Hide solution
+
+The solution of Example 1 provides a row-echelon form for the given matrix: \begin{eqnarray*} M_3&=&\left[\begin{array}{cccc}\begin{array}{|c|}\hline 2\\\hline\end{array}&-2&8&6\\ 0&\begin{array}{|c|}\hline 13\\\hline\end{array}&-33&-7\\ 0&0&\begin{array}{|c|}\hline \frac{400}{13}\\\hline\end{array}&\frac{400}{13}\end{array}\right]\,. \end{eqnarray*} The matrix \( M_3 \) is equivalent to \( M \) and it is in the row echelon form. In order to transform the matrix in the reduced row echelon form, we first want to divide each row by the value in the box. This way the boxes will contain values \( 1 \). We obtain the matrix: \begin{eqnarray*}M_4&=&\left[\begin{array}{cccc}\begin{array}{|c|}\hline 1\\\hline\end{array}&-1&4&3\\ 0&\begin{array}{|c|}\hline 1\\\hline\end{array}&-\frac{33}{13}&-\frac{7}{13}\\ 0&0&\begin{array}{|c|}\hline 1\\\hline\end{array}&1\end{array}\right]\,. \end{eqnarray*} Consider the last box, at the position \( (3,3) \). We want to eliminate values above it. We do this by multiplying the third row by \( -4 \) and adding it to the first; and multiplying the third row by \( \frac{33}{13} \) and adding it to the second. We obtain the following matrix: \begin{eqnarray*}M_5&=&\left[\begin{array}{cccc}\begin{array}{|c|}\hline 1\\\hline\end{array}&-1&0&-1\\ 0&\begin{array}{|c|}\hline 1\\\hline\end{array}&0&2\\ 0&0&\begin{array}{|c|}\hline 1\\\hline\end{array}&1\end{array}\right]\,. \end{eqnarray*} The matrix \( M_5 \) is not in the reduced row echelon form because the value at the position \( (2,2) \) is \( 1 \), while the value at \( (1,2) \) is not \( 0 \). Thus we add the second row to the first and obtain: \begin{eqnarray*}M_6&=&\left[\begin{array}{cccc}\begin{array}{|c|}\hline 1\\\hline\end{array}&0&0&1\\ 0&\begin{array}{|c|}\hline 1\\\hline\end{array}&0&2\\ 0&0&\begin{array}{|c|}\hline 1\\\hline\end{array}&1\end{array}\right]\,. \end{eqnarray*} The matrix \( M_6 \) is equivalent to \( M \) and it is in the reduced row echelon form.

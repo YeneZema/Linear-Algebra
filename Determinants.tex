@@ -1,0 +1,213 @@
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}								% Package to create dummy text
+\usepackage{amsmath,amsfonts,amsthm,amssymb}					% Math packages
+\usepackage[pdftex]{graphicx}									% Enable pdflatex
+\usepackage{hyperref} % URLs
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{rem}[thm]{Remark}
+\theoremstyle{plain}
+
+
+
+\begin{document}
+\nocite{}
+
+\title{Determinants}
+
+\author{Miliyon T.}
+\date{October 7, 2013}
+\maketitle
+%http://www.imomath.com/index.php?options=795&lmm=0
+ 
+\section{Introduction}
+
+We will first introduce the determinant in a way they are most often encountered and used in practice. We will state the main properties of determinant and see a few examples. After that we will introduce the concepts through alternating multilinear forms. This will allow us to prove the desired theorems and get a better understanding of the theory and connection between determinants and matrices.
+\section{Determinant: definition, properties, and examples}
+\begin{defn}[Recursive definition of determinant]
+Assume that \( 2\times 2 \) matrix \( A \) is of the following form: \( A=\left[\begin{array}{cc} a_{11}& a_{12}\\a_{21}&a_{22}\end{array}\right]\). Then \( \det(A) \) is defined to be the following number: \( \det(A)=a_{11}a_{22}-a_{12}a_{21} \).
+\end{defn}
+
+Assume that \( A \) is an \( n\times n \) matrix and that \( A_{11} \), \( A_{12} \), \( \dots \), \( A_{1n} \) are \( (n-1)\times(n-1) \) matrices obtained from \( A \) in the following way: \( A_{1j} \) is the matrix obtained by removing the first row and the \( j \)-th column from \( A \). Then the determinant of \( A \) is defined as: \[ \det(A)=a_{11}\cdot \det(A_{11})-a_{12}\cdot \det(A_{12})+a_{13}\cdot \det(A_{13})-a_{14}\cdot \det(A_{14})+\cdots+(-1)^{n+1} a_{1n}\cdot \det(A_{1n}).\]
+
+The determinant of the matrix \( A=\left[\begin{array}{cccc} a_{11}& a_{12}&\cdots&a_{1n}\\a_{21}&a_{22}&\cdots&a_{2n}\\ & &\vdots&\\ a_{n1}&a_{n2}&\cdots&a_{nn}\end{array}\right]\) is also denote by \[\det(A)=\det\left[\begin{array}{cccc} a_{11}& a_{12}&\cdots&a_{1n}\\a_{21}&a_{22}&\cdots&a_{2n}\\ & &\vdots&\\ a_{n1}&a_{n2}&\cdots&a_{nn}\end{array}\right]=\left|\begin{array}{cccc} a_{11}& a_{12}&\cdots&a_{1n}\\a_{21}&a_{22}&\cdots&a_{2n}\\ & &\vdots&\\ a_{n1}&a_{n2}&\cdots&a_{nn}\end{array}\right|. \]
+
+\begin{exmp}
+Evaluate the determinant \( \left|\begin{array}{ccc} 2&3&-2\\ 5&3&-5\\ 4&1&7 \end{array}\right|\).
+\begin{exmp}
+\begin{proof}[Solution.]
+According to the previous definition we have: \begin{eqnarray*} \left|\begin{array}{ccc} 2&3&-2\\ 5&3&-5\\ 4&1&7 \end{array}\right|&=& 2\left|\begin{array}{cc} 3&-5\\ 1&7 \end{array}\right|-3\cdot \left|\begin{array}{ccc} 5&-5\\ 4&7 \end{array}\right|+(-2)\cdot \left|\begin{array}{ccc} 5&3\\ 4&1 \end{array}\right| \\ &=& 2\cdot (3\cdot 7-1\cdot (-5))-3\cdot (5\cdot 7-4\cdot (-5))+(-2)\cdot (5\cdot 1-4\cdot 3)\\ &=&2\cdot 26-3\cdot 55-2\cdot (-7)=52-165+14=-99. \end{eqnarray*}
+\end{proof}
+\begin{thm}[Main properties of determinant]
+Assume that \( A \) is an \( n\times n \) matrix whose entry on the position \( (i,j) \) is equal to \( a_{ij} \). The following properties hold for the determinant of \( A \).
+
+    (a) If \( A^T \) is the transpose of \( A \) (i.e. if \( (a_{ij})_{i,j=1}^n \) are the entries of \( A \), then the \( (i,j) \) entry of \( A^T \) is \( a_{ji} \)), then \( \det(A)=\det(A^T) \).
+
+    (b) If \( B \) is the the matrix obtained from \( A \) by multiplying by \( \alpha \) each entry of the \( i \)-th row of \( A \), then \( \det(B)=\alpha\det(A) \). The same holds for columns.
+
+    (c) If \( B \) is the the matrix obtained from \( A \) by exchanging the places of \( i \)-th and \( j \)-th row, then \( \det(B)=-\det(A) \). The same holds for columns.
+
+    (d) If two rows of the matrix \( A \) are the same, then \( \det(A)=0 \). The same holds for columns
+
+    (e) If \( B \) is the the matrix obtained from \( A \) by replacing the \( i \)-th row with \( (a_{i1}+\alpha a_{j1},a_{i2}+\alpha a_{j2},\dots, a_{in}+\alpha a_{jn}) \), for some \( \alpha\in\mathbb R \) and some \( j\neq i \), then \( \det(B)=\det(A) \). The same holds for columns.
+
+    (f) If \( A \) and \( B \) are two \( n\times n \) matrices, then \( \det(A\cdot B)=\det(A)\cdot \det(B) \).
+\end{thm}
+Hide proof
+
+The proof is omitted for now. It will follow from Theorems 2-8.
+
+\begin{exmp}
+Evaluate the determinant \( \left|\begin{array}{ccccc} 5&10&0&0&0\\ 3&0&9&0&0\\ 1&1&0&0&3\\ 0&0&0&1&2\\ 2&4&6&8&10 \end{array}\right|\).
+\end{exmp}
+
+\begin{proof}[Solution.]
+Using the property (b) from Theorem 1 we obtain \begin{eqnarray*} \left|\begin{array}{ccccc} 5&10&0&0&0\\ 3&0&9&0&0\\ 1&1&0&0&3\\ 0&0&0&1&2\\ 2&4&6&8&10 \end{array}\right| &=& 5\left|\begin{array}{ccccc} 1&2&0&0&0\\ 3&0&9&0&0\\ 1&1&0&0&3\\ 0&0&0&1&2\\ 2&4&6&8&10 \end{array}\right|=5\cdot 3\cdot2\cdot \left|\begin{array}{ccccc} 1&2&0&0&0\\ 1&0&3&0&0\\ 1&1&0&0&3\\ 0&0&0&1&2\\ 1&2&3&4&5 \end{array}\right|. \end{eqnarray*} We will now multiply the first column by \( -2 \) and add it to the second to obtain: \begin{eqnarray*} 30\cdot\left|\begin{array}{ccccc} 1&2&0&0&0\\ 1&0&3&0&0\\ 1&1&0&0&3\\ 0&0&0&1&2\\ 1&2&3&4&5 \end{array}\right| &=&30 \cdot\left|\begin{array}{ccccc} 1&0&0&0&0\\ 1&-2&3&0&0\\ 1&-1&0&0&3\\ 0&0&0&1&2\\ 1&0&3&4&5 \end{array}\right|. \end{eqnarray*} Using the recursive evaluation of the determinant we obtain that the last determinant is equal to: \begin{eqnarray*} 30 \cdot\left|\begin{array}{ccccc} 1&0&0&0&0\\ 1&-2&3&0&0\\ 1&-1&0&0&3\\ 0&0&0&1&2\\ 1&0&3&4&5 \end{array}\right|= 30 \cdot\left|\begin{array}{cccc} -2&3&0&0\\ -1&0&0&3\\ 0&0&1&2\\ 0&3&4&5 \end{array}\right| =-30 \cdot\left|\begin{array}{cccc} -1&0&0&3\\ -2&3&0&0\\ 0&0&1&2\\ 0&3&4&5 \end{array}\right|. \end{eqnarray*} In the last step we exchanged positions of the first two rows, which according to Theorem 1 c) results in multiplying the determinant by \( -1 \). We can now multiply the first row by \( 3 \) and add it to the last to obtain: \begin{eqnarray*} -30 \cdot\left|\begin{array}{cccc} -1&0&0&3\\ -2&3&0&0\\ 0&0&1&2\\ 0&3&4&5 \end{array}\right|&=&-30 \cdot\left|\begin{array}{cccc} -1&0&0&0\\ -2&3&0&-6\\ 0&0&1&2\\ 0&3&4&5 \end{array}\right|=-15\cdot -1\cdot \left|\begin{array}{ccc} 3&0&-6\\ 0&1&2\\ 3&4&5 \end{array}\right|=30\cdot 3\cdot \left|\begin{array}{ccc} 1&0&-2\\ 0&1&2\\ 3&4&5 \end{array}\right|=90\cdot \left|\begin{array}{ccc} 1&0&0\\ 0&1&2\\ 3&4&11 \end{array}\right|\\ &=& 90\cdot \left|\begin{array}{cc} 1&2\\ 4&11 \end{array}\right|=90\cdot (1\cdot 11-2\cdot 4)=270. \end{eqnarray*}
+\end{proof}
+
+\begin{exmp}[Vandermonde determinant]
+Evaluate the determinant \( \left|\begin{array}{ccccc} 1& \alpha_1&\alpha_1^2&\cdots&\alpha_1^{n-1}\\ 1& \alpha_2&\alpha_2^2&\cdots&\alpha_2^{n-1}\\ & & &\vdots& \\ 1& \alpha_n&\alpha_n^2&\cdots&\alpha_n^{n-1}\\ \end{array}\right|\).
+\end{exmp}
+
+\begin{proof}[Solution.]
+We will prove by induction that the determinant is equal to \( \prod_{i< j}(\alpha_i-\alpha_j) \). The statement clearly holds for \( n=2 \). Assume that it holds for \( n-1 \).
+
+We will first multiply the \( n-1 \)-st column by \( \alpha_1^{n-2} \) and subtract it from the \( n \)-th. The original determinant becomes equal to: \[ \left|\begin{array}{ccccc} 1& \alpha_1&\alpha_1^2&\cdots&\alpha_1^{n-1}\\ 1& \alpha_2&\alpha_2^2&\cdots&\alpha_2^{n-1}\\ & & &\vdots& \\ 1& \alpha_n&\alpha_n^2&\cdots&\alpha_n^{n-1}\\ \end{array}\right| = \left|\begin{array}{cccccc} 1& \alpha_1&\alpha_1^2&\cdots&\alpha_1^{n-2}&0\\ 1& \alpha_2&\alpha_2^2&\cdots&\alpha_2^{n-2}&\alpha_2^{n-2}(\alpha_2-\alpha_1)\\ & & &\vdots&& \\ 1& \alpha_n&\alpha_n^2&\cdots&\alpha_n^{n-2}&\alpha_n^{n-2}(\alpha_n-\alpha_1)\\ \end{array}\right|. \] We now multiply the \( n-2 \)-nd column by \( \alpha_1^{n-3} \) and subtract it from the \( n-1 \)st. The determinant becomes equal to: \[ \left|\begin{array}{cccccc} 1& \alpha_1&\alpha_1^2&\cdots&\alpha_1^{n-2}&0\\ 1& \alpha_2&\alpha_2^2&\cdots&\alpha_2^{n-2}&\alpha_2^{n-2}(\alpha_2-\alpha_1)\\ & & &\vdots&& \\ 1& \alpha_n&\alpha_n^2&\cdots&\alpha_n^{n-2}&\alpha_n^{n-2}(\alpha_n-\alpha_1)\\ \end{array}\right|= \left|\begin{array}{cccccc} 1& \alpha_1&\alpha_1^2&\cdots&0&0\\ 1& \alpha_2&\alpha_2^2&\cdots&\alpha_2^{n-3}(\alpha_2-\alpha_1)&\alpha_2^{n-2}(\alpha_2-\alpha_1)\\ & & &\vdots&& \\ 1& \alpha_n&\alpha_n^2&\cdots&\alpha_n^{n-3}(\alpha_n-\alpha_1)&\alpha_n^{n-2}(\alpha_n-\alpha_1)\\ \end{array}\right|. \] Repeating the same procedure with the remaining columns, and using the part (b) of Theorem 1 we obtain: \begin{eqnarray*} \left|\begin{array}{ccccc} 1& \alpha_1&\alpha_1^2&\cdots&\alpha_1^{n-1}\\ 1& \alpha_2&\alpha_2^2&\cdots&\alpha_2^{n-1}\\ & & &\vdots& \\ 1& \alpha_n&\alpha_n^2&\cdots&\alpha_n^{n-1}\\ \end{array}\right| &=& \left|\begin{array}{cccccc} 1& 0&0&\cdots&0&0\\ 1& \alpha_2-\alpha_1&\alpha_2(\alpha_2-\alpha_1)&\cdots&\alpha_2^{n-3}(\alpha_2-\alpha_1)&\alpha_2^{n-2}(\alpha_2-\alpha_1)\\ & & &\vdots&& \\ 1& \alpha_n-\alpha_1&\alpha_n(\alpha_n-\alpha_1)&\cdots&\alpha_n^{n-3}(\alpha_n-\alpha_1)&\alpha_n^{n-2}(\alpha_n-\alpha_1)\\ \end{array}\right| \\&=& (\alpha_2-\alpha_1)(\alpha_3-\alpha_1)\cdots(\alpha_n-\alpha_1) \left|\begin{array}{cccccc} 1& 0&0&\cdots&0&0\\ 1& 1&\alpha_2 &\cdots&\alpha_2^{n-3} &\alpha_2^{n-2} \\ & & &\vdots&& \\ 1& 1&\alpha_n &\cdots&\alpha_n^{n-3} &\alpha_n^{n-2} \\ \end{array}\right|\\ &=& (\alpha_2-\alpha_1)(\alpha_3-\alpha_1)\cdots(\alpha_n-\alpha_1) \left|\begin{array}{ccccc} 1&\alpha_2 &\cdots&\alpha_2^{n-3} &\alpha_2^{n-2} \\ & &\vdots&& \\ 1&\alpha_n &\cdots&\alpha_n^{n-3} &\alpha_n^{n-2} \\ \end{array}\right|. \end{eqnarray*} We have reduced the problem to the case \( n-1 \) and we may use inductional hypothesis to conclude the result.
+\end{proof}
+\section{Multilinear forms}
+
+\begin{defn}
+A function \( L: \left(\mathbb R^k\right)^k\to\mathbb R \) is called multilinear form if it satisfies: For every \( i\in\{1,2,\dots, k\} \), every set of vectors \( \{v_1, \dots, v_{i-1}, v_i^{\prime},v_i^{\prime\prime},v_{i+1},\dots, v_k\} \), and every two scalars \( \alpha^{\prime} \) and \( \alpha^{\prime\prime} \) the following holds: \[ L\left(v_1,\dots, \alpha^{\prime} v_i^{\prime}+\alpha^{\prime\prime} v_i^{\prime\prime},\dots, v_k\right)=\alpha^{\prime} L(v_1,\dots, v_{i-1},v_i^{\prime},v_{i+1},\dots, v_k)+\alpha^{\prime\prime} L(v_1,\dots, v_{i-1},v_i^{\prime\prime},v_{i+1},\dots, v_k).\]
+\end{defn}
+
+\begin{defn}
+A multilinear form \( L: \left(\mathbb R^k\right)^k\to\mathbb R \) is called alternating if for every \( 1\leq i< j\leq k \) and every \( k \)-vectors \( v_1 \), \( \dots \), \( v_k \) the following holds: \[ L(v_1, \dots,v_{i-1}, v_i, v_{i+1},\dots, v_{j-1},v_j,v_{j+1},\dots, v_k)=-L(v_1,\dots,v_{i-1}, v_j, v_{i+1},\dots, v_{j-1},v_i,v_{j+1},\dots, v_k).\]
+\end{defn}
+
+\begin{exmp}
+Assume that \( \phi:\left(\mathbb R^3\right)^3\to \mathbb R \) is an alternating multilinear form, and assume that \( e_1 \), \( e_2 \), and \( e_3 \) are three vectors such that \( \phi(e_1,e_2,e_3)=1 \). Determine \( \phi(e_1,e_3,e_1) \), \( \phi(e_1,e_3,e_2) \), and \( \phi(e_3,e_1,e_2) \).
+\end{exmp}
+
+Hide solution
+
+By the property of the alternating forms we have for any three vectors \( v_1 \), \( v_2 \), and \( v_3 \) the following equality: \( \phi(v_1,v_2,v_3)=-\phi(v_3,v_2,v_1) \) with \( v_1=v_3=e_1 \) and \( v_2=e_3 \), we obtain \( \phi(e_1,e_3,e_1)=-\phi(e_1,e_3,e_1) \) which is equivalent to \( \phi(e_1,e_3,e_1)=0 \).
+
+\( \phi(e_1,e_3,e_2)=-\phi(e_1,e_2,e_3)=-1 \).
+
+\( \phi(e_3,e_1,e_2)=-\phi(e_1,e_3,e_2)=-(-1)=1 \).
+
+\section{Permutations}
+
+From the previous example we see that if we permute the vectors inside the alternating multilinear form the value of the form can either stay the same or change its sign. We will now find a characteristic property of the permutation that determines whether the form changes the sign.
+Definition 4
+
+
+A permutation \( \tau=(\tau_1, \dots, \tau_n) \) of \( 1,2,\dots, n \) is called a transposition if there are two distinct indices \( i \) and \( j \) such that
+
+    (i) \( i\neq j \),
+
+    (ii) \( \tau_i=j \), \( \tau_j=i \), and
+
+    (iii) \( \tau_k=k \) for all \( k\in\{1,2,\dots, n\}\setminus\{i,j\} \).
+
+\begin{thm}
+For every permutation \( \sigma \) of the set \( \{1,2,\dots, n\} \) there exist transpositions \( \tau_1, \dots, \tau_m \) such that \( \sigma=\tau_1\circ \tau_2\circ \cdots \circ\tau_m \).
+\end{thm}
+\begin{proof}
+We will use the induction on \( n \) to prove that every permutation can be expressed as a composition of transpositions. The statement clearly holds for the set \( \{1,2\} \). Assume that it holds for \( n-1 \), where \( n\geq 3 \) is an integer. Assume that \( \sigma=(\sigma_1, \dots, \sigma_n) \) is a permutation of \( \{1,2,\dots, n\} \). Let \( k \) be an integer such that \( \sigma_k=n \). Let \( \tau \) be the transposition \( (1,2,\dots, k-1,n,k,\dots, n) \). Let \( \sigma^{\prime}=(\sigma_1,\dots, \sigma_{k-1},\sigma_n,\sigma_{k+1},\dots, \sigma_{n-1},n) \). Then we have \( \sigma=\sigma^{\prime}\circ \tau \). The permutation \( \sigma^{\prime} \) leaves the last coordinate \( n \) fixed, hence the inductional hypothesis can be applied to conclude that there are transpositions \( \tau_1 \), \( \dots \), \( \tau_j \) such that \( \sigma^{\prime}=\tau_1\circ\cdots\circ \tau_j \). Thus \[ \sigma=\sigma^{\prime}\circ\tau=\tau_1\circ\cdots\circ \tau_j\circ \tau,\] which completes the proof of the existence of transpositions.
+\end{proof}
+
+\begin{thm}
+If \( \tau_1 \), \( \dots \), \( \tau_k \), \( \mu_1 \), \( \dots \), \( \mu_l \) are transpositions such that \( \sigma=\tau_1\circ \tau_2\circ \cdots \circ\tau_m= \mu_1\circ \mu_2\circ\cdots\circ \mu_l \) than the number \( m-l \) is even.
+\end{thm}
+\begin{proof}
+The pair \( (i,j) \) of indices is called inversion for the permutation \( \sigma \) if \( \sigma_i> \sigma_j \). Each transposition has an odd number of inversions. Indeed if \( p< q \), the transposition \( (1,2,\dots,p-1, q,p+1, \dots, q-1,\dots, p, q+1,\dots, n) \) has exactly \( 2(q-p)-1 \) inversions.
+
+Assume that \( \phi \) is a permutation and \( \tau \) a transposition. Assume that \( \phi \) has \( u \) inversions, and that \( \phi\circ \tau \) has \( v \) inversions. We will prove that \( u-v \) is odd. Let \( \tau=(1,2,\dots,p-1, q,p+1, \dots, q-1,\dots, p, q+1,\dots, n) \), where \( p< q \). If \( i,j\in\{1,2,\dots, n\}\setminus\{p,q\} \), then \( (i,j) \) is an inversion for \( \phi\circ \tau \) if and only if it is an inversion for \( \phi \). Let \begin{eqnarray*}A&=&\{i\in\{p+1,\dots, q-1\}: \phi_p\lneq \phi_i\},\\ B&=&\{i\in\{p+1,\dots, q-1\}: \phi_p\gneq \phi_i\},\\ C&=&\{i\in\{p+1,\dots, q-1\}: \phi_q\lneq \phi_i\}, \\D&=&\{i\in\{p+1,\dots, q-1\}: \phi_q\gneq \phi_i\}. \end{eqnarray*} We will now use \( |A| \), \( |B| \), \( |C| \), and \( |D| \) to express the difference \( u-v \) between the number of inversions in \( \phi \) and \( \phi\circ \tau \). If \( \phi_p> \phi_q \), then \( u-v=|B|+|C|-|A|-|D|+1 \). If \( |phi_p< \phi_q \), then \( u-v=|B|+|C|-|A|-|D|-1 \). In either case we have \( u-v\equiv |B|+|C|-|A|-|D|+1 \) (mod 2). Thus \[ u-v\equiv |B|+|C|-|A|-|D|+1\equiv |B|+|C|+|A|+|D|+1\quad\quad (\mbox{mod }2).\] Since \( |A|+|B|=|C|+|D|=q-p-1 \), we conclude that \( u-v \) is odd.
+
+The expression \( \sigma=\tau_1\circ \tau_2\circ \cdots \circ\tau_m \) implies that the number of inversions in \( \sigma \) is congruent to \( (-1)^m \) modulo \( 2 \). Similarly, from \( \sigma=\mu_1\circ \mu_2\circ\cdots\circ \mu_l \) we conclude that the number of inversions in \( \sigma \) is congruent to \( (-1)^l \) modulo \( 2 \). Thus \( k-l \) is divisible by \( 2 \).
+\end{proof}
+
+\begin{exmp}
+Assume that \( \phi:\left(\mathbb R^k\right)^k\to \mathbb R \) is an alternating multilinear form, and assume that \( e_1 \), \( \dots \), \( e_k \) are vectors from \( \mathbb R^k \). Assume that \( \sigma=(\sigma_1, \dots, \sigma_k) \) is a permutation of the numbers \( 1 \), \( 2 \), \( \dots \), \( k \). Denote by \( \mbox{sgn }(\sigma) \) the sign of the permutation \( \sigma \). Prove that \( \phi(e_{\sigma_1},\dots, e_{\sigma_k})=\mbox{sgn }(\sigma)\cdot \phi(e_1,\dots, e_k) \).
+\end{exmp}
+
+\begin{proof}[Solution.]
+Let \( \tau_1 \), \( \dots \), \( \tau_m \) be the sequence of transpositions such that \( \sigma=\tau_1\circ\tau_2\circ\cdots\circ \tau_k \). Then \begin{eqnarray*}\phi(e_1, \dots, e_k)&=&-\phi(e_{\tau_m(1)},\dots, e_{\tau_m(k)})=\phi(e_{\tau_{m-1}\circ\tau_m(1)},\dots, e_{\tau_{m-1}\circ\tau_m(k)}) \\&=&-\phi(e_{\tau_{m-2}\circ\tau_{m-1}\circ\tau_m(1)},\dots, e_{\tau_{m-2}\circ\tau_{m-1}\circ\tau_m(k)})\\ &=&(-1)^k\phi(e_{\sigma_1},\dots, e_{\sigma_k})\\ &=&\mbox{sgn }(\sigma)\cdot \phi(e_{\sigma_1},\dots, e_{\sigma_k}). \end{eqnarray*}
+\end{proof}
+
+\section{Determinant}
+
+\begin{thm}
+Assume that \( e_1 \), \( \dots \), \( e_k \) is a basis of \( \mathbb R^k \). There exists a unique multilinear form \( L: \left(\mathbb R^k\right)^k\to\mathbb R \) such that \( L(e_1,\dots, e_k)=1 \).
+\end{thm}
+
+\begin{proof}
+Assume that \( v_1 \), \( \dots \), \( v_k \) are vectors from \( \mathbb R^k \). Assume that \( (\alpha_{ij})_{1\leq i,j\leq k} \) are real numbers such that for each \( i\in\{1,2,\dots, k\} \) we have \( v_i=\alpha_{1i}e_1+\cdots+\alpha_{ki}e_k \). Then we have \begin{eqnarray*} L(v_1,\dots, v_k)&=&L\left(\sum_{j=1}^k \alpha_{j1}e_j,\dots, \sum_{j=1}^k\alpha_{jk}e_j\right)\\ &=&\sum_{j=1}^k \alpha_{j1}L\left(e_j,\sum_{m=1}^k\alpha_{m2}e_m,\dots, \sum_{m=1}^k\alpha_{mk}e_m\right)\\ &=&\cdots\\ &=&\sum_{i_1,\dots, i_k=1}^k \alpha_{i_11}\cdots\alpha_{i_kk}L\left(e_{i_1},\dots, e_{i_k}\right). \end{eqnarray*} In the last sum the term \( L\left(e_{i_1},\dots, e_{i_k}\right) \) is non-zero if and only if \( \{i_1,\dots, i_k\}=\{1,2,\dots, k\} \), i.e. if and only if \( (i_1,\dots, i_k) \) is a permutation of \( \{1,2,\dots, k\} \). Thus \[ L(v_1,\dots, v_k)=\sum_{\pi}\alpha_{\pi_11}\cdots \alpha_{\pi_kk}L\left(e_{\pi_1},\dots, e_{\pi_k}\right),\] where the last sum is taken over all permutations \( \pi=(\pi_1,\dots, \pi_k) \) of \( \{1,2,\dots, k\} \). The value \( L\left(e_{\pi_1},\dots, e_{\pi_k}\right) \) is either \( 1 \) or \( -1 \), and it depends on whether the number of transpositions in the permutation \( (\pi_1,\dots, \pi_k) \) is odd or even. Therefore \[ L(v_1,\dots, v_k)=\sum_{\pi}\alpha_{\pi_11}\cdots \alpha_{\pi_kk}\cdot \mbox{sgn }(\pi)\cdot L\left(e_1,\dots, e_k\right)=\sum_{\pi}\alpha_{\pi_11}\cdots \alpha_{\pi_kk}\cdot \mbox{sgn }(\pi). \] which means that \( L(v_1, \dots, v_k) \) is uniquely determined if we require \( L(e_1,\dots, e_k)=1 \).
+\end{proof}
+
+\begin{defn}
+The multilinear form obtained in the previous theorem is called determinant.
+\end{defn}
+
+\begin{exmp}
+Let \( v_1=\left[\begin{array}{c} 1\\0\\2\end{array}\right]\), \( v_2=\left[\begin{array}{c} 0\\1\\-1\end{array}\right]\), and \( v_3=\left[\begin{array}{c} 2\\-1\\1\end{array}\right]\). Evaluate the determinant \( \phi(v_1,v_2,v_3) \).
+\end{exmp}
+
+\begin{proof}[Solution.]
+We will use the formula from the proof of Theorem 4. If we denote \(  v_i=\sum_{j=1}^3 \alpha_{ij} \) then \[ \phi(v_1,v_2,v_3)=\sum_{\pi}\alpha_{1\pi_1}\alpha_{2\pi_2} \alpha_{3\pi_3}\phi\left(e_{\pi_1},e_{\pi_2}, e_{\pi_2}\right)= \sum_{\pi}\alpha_{1\pi_1}\alpha_{2\pi_2} \alpha_{3\pi_3}\mbox{sgn }(\pi) ,\] where the summation is over all permutations \( \pi=(\pi_1,\pi_2,\pi_3) \) of \( \{1,2,3\} \). Thus: \begin{eqnarray*}\phi(v_1, v_2, v_3)&=&1\cdot1\cdot 1-1\cdot (-1)\cdot (-1)-0\cdot 0\cdot 1+0\cdot (-1)\cdot 2+2\cdot 0\cdot (-1)-2\cdot 1\cdot 2\\ &=&-4. \end{eqnarray*}
+\end{proof}
+
+In the future, instead of \( \phi\left(\left[\begin{array}{c} 1\\0\\2\end{array}\right], \left[\begin{array}{c} 0\\1\\-1\end{array}\right], \left[\begin{array}{c} 2\\-1\\1\end{array}\right]\right)\), we will write \( \left|\begin{array}{ccc} 1&0&2\\0&1&-1\\2&-1&1\end{array}\right| \) or \( \mbox{det } \left[\begin{array}{ccc} 1&0&2\\0&1&-1\\2&-1&1\end{array} \right]\).
+
+\section{Properties of determinant}
+\begin{thm}
+If \( A \) is an \( n\times n \) matrix, then \( \mbox{det }(A)=\mbox{det} (A^T) \), where \( A \) is the transpose of \( A \) (i.e. if \( (a_{ij})_{i,j=1}^n \) are the entries of \( A \), then the \( (i,j) \) entry of \( A^T \) is \( a_{ji} \))
+\end{thm}
+
+\begin{proof}
+This theorem follows directly from the representations \[ \det (A)=\sum_{\pi} a_{\pi_11}\cdots a_{\pi_nn}\mbox{sgn }(\pi)\quad\quad\quad \mbox{and}\quad\quad\quad \det(A^T)=\sum_{\pi} a_{1\pi_i}\cdots a_{n\pi_n}\mbox{sgn }(\pi),\] and the fact that each permutation has the same sign as its inverse.
+\end{proof}
+
+\begin{thm}
+Let \( A \) be an \( n\times n \) matrix whose \( (i,j) \) entry is equal to \( a_{ij} \). Let us denote by \( \hat A_{ij} \) the determinant of the \( (n-1)\times(n-1) \) matrix obtained by removing the \( i \)-th row and the \( j \)-th column of \( A \). Then for every \( i \) and \( j \) from \( \{1,2,\dots, n\} \) we have \[ \det(A)=\sum_{k=1}^n a_{ik}\cdot (-1)^{i+k}\hat A_{ik}=\sum_{k=1}^n a_{kj}\cdot (-1)^{j+k} \hat A_{kj}.\]
+\end{thm}
+
+\begin{proof}
+We will prove the first equality. The second one is analogous. \begin{eqnarray*} \det (A)&=&\sum_{\pi}a_{\pi_11}\cdots a_{\pi_nn} \mbox{sgn }(\pi)=\sum_{k=1}^n\sum_{\pi:\pi_k=i}a_{\pi_11}\cdots a_{\pi_nn} \mbox{sgn }(\pi)\\ &=&\sum_{k=1}^n a_{ik}\cdot \sum_{\pi:\pi_k=i}a_{\pi_11}\cdots a_{\pi_{k-1},k-1}\cdot a_{\pi_{k+1},k+1}\cdots a_{\pi_nn} \mbox{sgn }(\pi). \end{eqnarray*} It remains to prove that \[ (-1)^{i+k}\hat A_{ik}=\sum_{\pi:\pi_k=i}a_{\pi_11}\cdots a_{\pi_{k-1},k-1}\cdot a_{\pi_{k+1},k+1}\cdots a_{\pi_nn} \mbox{sgn }(\pi).\] Consider the permutation \( \pi=(\pi_1,\dots, \pi_n) \) such that \( \pi_k=i \). Consider the permutation \( \hat \pi \) on the set \( \{1,2,\dots, n\}\setminus\{i\} \) obtained when the entry \( \pi_k=i \) is removed from \( \pi \). Let us determine the number of inversions in \( \pi \) that are not present in \( \hat\pi \). Assume that \( u \) of the numbers \( \{\hat\pi_1,\dots, \hat\pi_{k-1}\} \) are smaller than \( i \). Then \( k-1-u \) of the numbers \( \{\hat \pi_1,\dots, \hat\pi_{k-1}\} \) are larger than \( i \), and they will generate inversions in \( \pi \) that are not present in \( \hat \pi \). We can also conclude that \( i-1-u \) of the numbers \( \{\hat\pi_{k},\dots, \hat\pi_n\} \) are smaller than \( i \), and they will form inversion in \( \pi \) that are not in \( \hat \pi \). Hence the difference between the number of inversions in \( \pi \) and \( \hat \pi \) is equal to \( k-1-u+i-1-u=k+i-2u-2\equiv k+i \) (mod \( 2 \)). Therefore \( \mbox{sgn }(\pi)=(-1)^{k+i}\mbox{sgn }(\pi) \), hence: \[ \sum_{\pi:\pi_k=i}a_{\pi_11}\cdots a_{\pi_{k-1},k-1}\cdot a_{\pi_{k+1},k+1}\cdots a_{\pi_nn} \mbox{sgn }(\pi)=(-1)^{k+i}\sum_{\pi:\pi_k=i} a_{\pi_11}\cdots a_{\pi_{k-1},k-1}\cdot a_{\pi_{k+1},k+1}\cdots a_{\pi_nn} \mbox{sgn }(\hat\pi)=(-1)^{k+i} \hat A_{ik}. \] This completes the proof of the theorem.
+\end{proof}
+
+\begin{thm}[Inverse of a matrix]
+Assume that \( A \) is an \( n\times n \) matrix whose entry on the position \( (i,j) \) is equal to \( a_{ij} \). Let \( B \) be the matrix whose \( (i,j) \) entry is equal to \( b_{ij}=(-1)^{i+j}\hat A_{ji} \). Then \( AB=\det (A)I \), where \( I \) is the \( n\times n \) identity matrix.
+\end{thm}
+
+\begin{proof}
+Let \( C=AB \), and let \( c_{ij} \) be the entry on the position \( (i,j) \) of the matrix \( C \). We have \[ c_{ii}=\sum_{k=1}^n a_{ik}b_{ki}=\sum_{k=1}^n a_{ik}\cdot (-1)^{i+k}\hat A_{ik}=\det (A),\] according to Theorem 6. We will now prove that \( c_{ji}=0 \) for \( i\neq j \). Consider the matrix \( M \) that is obtained from matrix \( A \) by replacing the \( i \)-th row by the \( j \)-th row. Then \( \det(M)=\det(M^T)=0 \), since \( \det(M^T) \) is the alternating multilinear form evaluated on \( n \) vectors where \( i \)-th and \( j \)-th vectors are identical. Using Theorem 6 we obtain \[ \det (M)=0=\sum_{k=1}^n a_{ik}(-1)^{i+k}\hat A_{ik}=\sum_{k=1}^n a_{jk}(-1)^{i+k}\hat A_{ik}=\sum_{k=1}^n a_{jk}b_{ki}=c_{ji}.\]
+\end{proof}
+
+A consequence of the previous theorem is that if \( A \) is invertible then \( A^{-1}=\frac1{\det(A)} B \), where \( B \) is the matrix whose \( (i,j) \)-entry is equal to \( (-1)^{i+j}\hat A_{ji} \).
+
+\begin{thm}[Multiplicative property]
+If \( A \) and \( B \) are two \( n\times n \) matrices, then \( \mbox{det }(AB)=\mbox{det }(A)\cdot \mbox{det }(B) \).
+\end{thm}
+
+\begin{proof}
+Assume that \( a_{ij} \) (\( 1\leq i,j\leq n \)) are the entries of \( A \), and \( b_{ij} \), \( 1\leq i,j\leq n \), are the entries of \( B \). Let us denote by \( b_1 \), \( \dots \), \( b_n \) the column vectors of \( B \), i.e. for \( i\in\{1,2,\dots, n\} \) we have \[ b_i=\left[\begin{array}{c}b_{1i}\\b_{2i}\\\vdots\\b_{ni}\end{array}\right].\] Let us denote by \( e_1 \), \( \dots \), \( e_n \) the standard basis of \( \mathbb R^n \), and let us denote by \( \phi \) the multilinear form corresponding to the determinant. Then we have \(  b_i=\sum_{j=1}^n b_{ji}e_j \) and \begin{eqnarray*} \mbox{det }(AB)&=&\phi(Ab_1,\dots, Ab_n)=\phi\left(\sum_{j=1}^n Ab_{j1}e_j,\dots, \sum_{j=1}^nAb_{jn}e_j\right)\\ &=&\sum_{j_1,\dots, j_n=1}^n \phi\left(b_{j_11}Ae_{j_1}, b_{j_22}Ae_{j_2},\dots, b_{j_nn}Ae_{j_n}\right)\\ &=&\sum_{j_1,\dots, j_n=1}^n b_{j_11}b_{j_22}\cdots b_{j_nn}\phi\left(Ae_{j_1}, Ae_{j_2},\dots,Ae_{j_n}\right). \end{eqnarray*} In the last summation the term \( \phi\left(Ae_{j_1}, Ae_{j_2},\dots,Ae_{j_n}\right) \) is zero unless \( (j_1,\dots, j_n) \) is a permutation of \( \{1,2,\dots, n\} \). Therefore \begin{eqnarray*}\mbox{det }(AB)&=&\sum_{\pi} b_{\pi_11}b_{\pi_22}\cdots b_{\pi_nn}\phi\left(Ae_{\pi_1},\dots, Ae_{\pi_n}\right) \\&=&\sum_{\pi} b_{\pi_11}b_{\pi_22}\cdots b_{\pi_nn}\cdot \mbox{sgn }(\pi)\cdot \phi\left(Ae_1,\dots, Ae_n\right). \end{eqnarray*} The summations are taken over all permutations \( \pi \) of \( \{1,2,\dots, n\} \). Notice that the last factor \( \phi\left(Ae_1,\dots, Ae_n\right) \) is equal to \( \mbox{det }(A) \), hence \begin{eqnarray*}\mbox{det }(AB)&=&\mbox{det }(A)\cdot \sum_{\pi} b_{\pi_11}b_{\pi_22}\cdots b_{\pi_nn}\cdot \mbox{sgn }(\pi)=\mbox{det }(A)\cdot \mbox{det }(B).\end{eqnarray*}
+\end{proof}
+
+\end{document}

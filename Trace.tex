@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+
+% This first part of the file is called the PREAMBLE. It includes
+% customizations and command definitions. The preamble is everything
+% between \documentclass and \begin{document}.
+
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm}                % better theorem environments
+\usepackage{amsthm,amssymb}
+
+
+% various theorems, numbered by section
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+
+\begin{document}
+
+
+\nocite{}
+
+\title{\textbf{Trace of a Matrix}}
+
+\author{Miliyon T.}
+\maketitle
+
+
+\section*{}
+
+\subsection*{Definition}
+
+\begin{itemize}
+\item \emph{\textbf{Trace}:} is the sum of the diagonals of the matrix. Let $A$ be a matrix of order $n$
+$$
+  A = \left[
+    \begin{matrix}
+      a_{11} & a_{12} &   \cdots & a_{1n} \\
+      a_{21} & a_{22} &   \cdots & a_{2n} \\
+      \vdots & \vdots &   \ddots & \vdots \\
+      a_{n1} & a_{n2} & \cdots & a_{nn}
+    \end{matrix}
+    \right].
+    $$
+then the trace of A is given by
+$$ \mbox{tr}(A)=a_{11}+a_{22}+\cdot\cdot\cdot+a_{nn}$$
+Generally,
+$$
+ \mbox{tr}(A)=\sum_{i=1}^n a_{ii}
+$$
+\textmd{\textbf{Basic properties of trace}}
+ \begin{enumerate}
+           \item \mbox{tr}(A+B)=\mbox{tr}(A)+\mbox{tr}(B)
+           \item \mbox{tr}(A+B)
+           \item \mbox{tr}(AB)
+ \end{enumerate}
+
+
+\item \emph{\textbf{Similar Matrix}}: The matrices A and B $\in M_n(F)$ are Similar if there exists an invertible matrix P such that
+$$B=P^{-1}AP$$
+
+\end{itemize}
+
+
+\begin{lem}
+  Trace of a matrix is commutative
+  $$
+  \mbox{tr}(AB)=\mbox{tr}(BA)
+  $$
+\end{lem}
+
+\begin{proof}
+\begin{equation}
+\mbox{tr}(AB)=\sum_{i=1}^n\sum_{k=1}^n A_{ik}B_{ki}
+\end{equation}
+
+\begin{equation}
+\mbox{tr}(BA)=\sum_{i=1}^n\sum_{k=1}^n B_{ik}A_{ki}=\sum_{i=1}^n\sum_{k=1}^n A_{ki}B_{ik}
+\end{equation}
+
+Changing the index in (2) from $k$ to $i$ completes the proof.
+
+\end{proof}
+
+\begin{thm}[Similar trace Theorem]
+  Similar matrices have the same trace.
+\end{thm}
+
+\begin{proof}
+ Let A and B be Similar matrices by definition,
+ $$ B=P^{-1}AP$$
+\begin{align*}
+\mbox{tr}(B)&=\mbox{tr}(P^{-1}AP)\\
+     &=\mbox{tr}(P^{-1}PA) ~~~~~~    from~the~lemma~above\\
+     &=\mbox{tr}(A)        ~~~~~~ \because ~P^{-1}P=I_n=1\\
+\therefore \mbox{tr}(B)=\mbox{tr}(A)
+\end{align*}
+\end{proof}
+\begin{cor}
+If A and B are similar matrices, then $A_iB^i=B_iA^i$. Where $A^i =i^{th}$ column of A and $A_i=i^{th}$ row of A.
+\end{cor}
+
+ \begin{thebibliography}{9}
+
+\bibitem{May}
+[Demissu Gemeda]
+Topics in Linear Algebra,
+Addis Ababa University. 2005
+
+\bibitem{amsshort}
+[Sheldon Axler]
+Linear Algebra Done Right,
+Springer Publishing. 1997
+
+\bibitem{notsoshort}
+[Kolman \S  Hill]
+Introduction to Linear Algebra with Applications.2000
+
+\end{thebibliography}
+
+\end{document}

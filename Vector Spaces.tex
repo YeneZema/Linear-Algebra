@@ -1,0 +1,159 @@
+
+Vector Spaces
+Introduction to vectors
+
+Vector spaces are abstract and general algebraic concepts, and we will define them later in this section. We will start first by giving examples of familiar vector spaces and we will recall the basic operations that we performed on vectors. One special case of vector spaces is the space of vectors in geometry. However, it will become clear later that the concept of vectors can be made general enough to include functions, matrices, geometric transformations, and many other objects in mathematics.
+
+We will start with two algebraic examples. If you want to see a geometric example and interpretation of vectors, you should read the section Vectors and equations of lines and planes that is part of the training materials on Calculus.
+Vectors in \( \mathbb R^n \)
+
+We use \( \mathbb R^n \) to represent the \( n \)-tuples \( (x_1, x_2, \dots, x_n) \) of real numbers. For example, \( (1,-2) \) and \( (-\sqrt 2, 0) \) are elements of \( \mathbb R^2 \). Similarly, \[ \left(\frac{\sqrt 3}{\pi},-2,1\right)\in\mathbb R^3, \quad \quad (1,1,0,0)\in\mathbb R^4,\quad\quad (-2,7,1,4,4,1,1)\in\mathbb R^7.\]
+
+We will use the term vector to refer to an element of \( \mathbb R^n \), and the word scalar for an element of \( \mathbb R \). We will now define the sum of vectors and a multiple of a vector by a scalar. In the remainder of this chapter will use the arrows on top of letters (such as \( \overrightarrow{v} \)) to emphasize that we are dealing with vectors. However, in subsequent chapters we will stop doing so because it is always clear from the definitions of the variables whether they are vectors or scalars.
+
+Definition
+
+Assume that \( \overrightarrow v \) and \( \overrightarrow w \) are elements of \( \mathbb R^n \), and that \( \alpha\in \mathbb R \) is a real number. If \begin{eqnarray*} \overrightarrow v=\left(x_1, x_2, \dots, x_n\right) \quad\quad\quad\mbox{and}\quad\quad\quad \overrightarrow w=\left(y_1, y_2,\dots, y_n\right), \end{eqnarray*} then we define \( \overrightarrow v+\overrightarrow w \) to be the following vector: \begin{eqnarray*} \overrightarrow v+\overrightarrow w=\left(x_1+y_1,x_2+y_2,\dots, x_n+y_n\right). \end{eqnarray*} We also define \( \alpha\overrightarrow v \) to be the following vector: \begin{eqnarray*} \alpha \overrightarrow v=\left(\alpha x_1, \alpha x_2, \dots, \alpha x_n\right). \end{eqnarray*}
+
+Column vectors
+
+Consider the matrices of the format \( n\times 1 \) whose elements are real numbers. These matrices are called columns and they have the following form: \( \left[\begin{array}{c}x_1\\ x_2\\ \vdots \\ x_n\end{array}\right] \). The set of all such matrices will be denoted by \( M_{n,1}(\mathbb R) \).
+
+We will use the term vector to refer to an element of \( M_{n,1}(\mathbb R) \), and the word scalar for an element of \( \mathbb R \). We will now define the sum of vectors and a multiple of a vector by a scalar. We will use the notation \( \overrightarrow{v} \) for vectors.
+
+Definition
+
+Assume that \( \overrightarrow v \) and \( \overrightarrow w \) are elements of \( M_{n,1}(\mathbb R) \), and that \( \alpha\in \mathbb R \) is a real number. If \begin{eqnarray*} \overrightarrow v=\left[\begin{array}{c}x_1\newline x_2\newline \vdots \newline x_n\end{array}\right] \quad\quad\quad\mbox{and}\quad\quad\quad \overrightarrow w=\left[\begin{array}{c}y_1\newline y_2\newline \vdots \newline y_n\end{array}\right], \end{eqnarray*} then we define \( \overrightarrow v+\overrightarrow w \) to be the following vector: \begin{eqnarray*} \overrightarrow v+\overrightarrow w=\left[\begin{array}{c}x_1+y_1\newline x_2+y_2\newline \vdots \newline x_n+y_n\end{array}\right]. \end{eqnarray*} We also define \( \alpha\overrightarrow v \) to be the following vector: \begin{eqnarray*} \alpha \overrightarrow v=\left[\begin{array}{c}\alpha x_1\newline \alpha x_2\newline \vdots \newline \alpha x_n\end{array}\right]. \end{eqnarray*}
+
+Properties of addition and scalar multiplication
+
+The following important properties of vector addition and scalar multiplication are very easy to prove for the above examples of \( \mathbb R^n \) and \( M_{n,1}(\mathbb R) \).
+
+Theorem 1
+
+
+If \( V=\mathbb R^n \) or \( V=M_{n,1}(\mathbb R) \), the following relations hold:
+
+    (Associativity) For every three elements \( \overrightarrow u, \overrightarrow v, \overrightarrow w\in V \) the following holds: \( \overrightarrow u+(\overrightarrow v+\overrightarrow w)=(\overrightarrow u+\overrightarrow v)+\overrightarrow w \).
+
+    (Neutral) For every element \( \overrightarrow u\in V \) the following holds: \( \overrightarrow u+\overrightarrow 0=\overrightarrow 0+\overrightarrow u=\overrightarrow u \).
+
+    (Inverse) For every element \( \overrightarrow u\in V \) there exists an element \( \overrightarrow{u^{\prime}}\in V \) such that \( \overrightarrow u+\overrightarrow{u^{\prime}}=\overrightarrow{u^{\prime}}+\overrightarrow u=\overrightarrow 0 \).
+
+    (Commutativity) For every two elements \( \overrightarrow u,\overrightarrow v\in V \) the following holds: \( \overrightarrow u+\overrightarrow v=\overrightarrow v+\overrightarrow u \).
+
+    (V2) \( \alpha(\overrightarrow u+\overrightarrow v)=\alpha \overrightarrow u+\alpha \overrightarrow v \),
+
+    (V3) \( (\alpha+\beta)\overrightarrow u=\alpha \overrightarrow u+\beta \overrightarrow u \),
+
+    (V4) \( (\alpha\beta)\overrightarrow u=\alpha (\beta \overrightarrow u) \),
+
+    (V5) \( 1\overrightarrow u=\overrightarrow u \).
+
+Hide proof
+
+We will prove the theorem for \( V=\mathbb R^n \). The proof for \( M_{n,1}(\mathbb R) \) is very similar.
+
+    (Associativity) Assume that \( \overrightarrow u \), \( \overrightarrow v \), and \( \overrightarrow w \) are three elements of \( V \). Then there are real numbers \( u_1 \), \( \dots \), \( u_n \), \( v_1 \), \( \dots \), \( v_n \), and \( w_1 \), \( \dots \), \( w_n \) such that: \[ \overrightarrow u=\left(u_1,\dots, u_n\right),\quad\quad \overrightarrow v=\left(v_1,\dots, v_n\right),\quad\mbox{and }\quad \overrightarrow w=\left(w_1,\dots, w_n\right).\] The we have \begin{eqnarray*} \overrightarrow u+\overrightarrow v&=&\left(u_1+v_1,\dots, u_n+v_n\right)\\ \left(\overrightarrow u+\overrightarrow v\right)+\overrightarrow w&=&\left((u_1+v_1)+w_1, \dots, (u_n+v_n)+w_n\right)=\left(u_1+v_1+w_1,\dots, u_n+v_n+w_n\right). \end{eqnarray*} Similarly, \begin{eqnarray*} \overrightarrow v+\overrightarrow w&=&\left(v_1+w_1,\dots, v_n+w_n\right)\\ \overrightarrow u+\left(\overrightarrow v+\overrightarrow w\right)&=&\left(u_1+(v_1+w_1), \dots, u_n+(v_w+w_n)\right)=\left(u_1+v_1+w_1,\dots, u_n+v_n+w_n\right). \end{eqnarray*} Thus \[ \overrightarrow u+(\overrightarrow v+\overrightarrow w)=(\overrightarrow u+\overrightarrow v)+\overrightarrow w.\]
+
+    (Neutral) Assume that \( \overrightarrow u\in V \). There exist real numbers \( u_1 \), \( \dots \), \( u_n \) such that \( \overrightarrow u=\left(u_1,\dots, u_n\right) \). Then \[ \overrightarrow u+\overrightarrow 0=\left(u_1,\dots, u_n\right)+\left(0,\dots, 0\right)=\left(u_1+0,\dots, u_n+0\right)=\left(u_1,\dots, u_n\right)=\overrightarrow u.\] In an analogous way we prove that \( \overrightarrow 0+\overrightarrow u=\overrightarrow u \).
+
+    (Inverse) Assume that \( \overrightarrow u\in V \). There exist real numbers \( u_1 \), \( \dots \), \( u_n \) such that \( \overrightarrow u=\left(u_1,\dots, u_n\right) \). If we define \( \overrightarrow{ u^{\prime}}=\left(-u_1,\dots, -u_n\right) \) then we have \[ \overrightarrow u+\overrightarrow{u^{\prime}}=\overrightarrow{ u^{\prime}}+\overrightarrow u=\overrightarrow 0.\]
+
+    (Commutativity) Assume that \( \overrightarrow u \) and \( \overrightarrow v \) are two elements of \( V \). Then there are real numbers \( u_1 \), \( \dots \), \( u_n \), and \( v_1 \), \( \dots \), \( v_n \) such that: \[ \overrightarrow u=\left(u_1,\dots, u_n\right),\quad\quad \mbox{and}\quad\quad \overrightarrow v=\left(v_1,\dots, v_n\right).\] Then we have \( \overrightarrow u+\overrightarrow v=\left(u_1+v_1,\dots, u_n+v_n\right) \) while \( \overrightarrow v+\overrightarrow u=\left(v_1+u_1,\dots, v_n+u_n\right) \). Since \( u_1+v_1=v_1+u_1 \), \( \dots \), \( u_n+v_n=v_n+u_n \) we conclude that \( \overrightarrow u+\overrightarrow v=\overrightarrow v+\overrightarrow u \).
+
+    (V2) Assume that \( \overrightarrow u \) and \( \overrightarrow v \) are two elements of \( V \). Then there are real numbers \( u_1 \), \( \dots \), \( u_n \), and \( v_1 \), \( \dots \), \( v_n \) such that: \[ \overrightarrow u=\left(u_1,\dots, u_n\right),\quad\quad \mbox{and}\quad\quad \overrightarrow v=\left(v_1,\dots, v_n\right).\] We have that \( \overrightarrow u+\overrightarrow v=\left(u_1+v_1,\dots, u_n+v_n\right) \) hence \begin{eqnarray*}\alpha(\overrightarrow u+\overrightarrow v)&=&\alpha\left(u_1+v_1,\dots, u_n+v_n\right)=\left(\alpha(u_1+v_1),\dots, \alpha(u_n+v_n)\right)\\ &=&\left(\alpha u_1+\alpha v_1, \dots, \alpha u_n+\alpha v_n\right)\\ &=&\left(\alpha u_1, \dots, \alpha u_n\right)+\left(\alpha v_1, \dots, \alpha v_n\right)\\ &=&\alpha\left(u_1,\dots, u_n\right)+\alpha\left(v_1,\dots, v_n\right)\\ &=&\alpha \overrightarrow u+\alpha \overrightarrow v.\end{eqnarray*}
+
+    The properties (V3), (V4), and(V5) are easy to prove, and like all the properties from above follow immediately from the definitions.
+
+Linear combination. Span
+
+If \( \alpha_1 \), \( \dots \), \( \alpha_k \) are real numbers and \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \) vectors, then \( \alpha_1\overrightarrow v_1+\dots \alpha_k\overrightarrow v_k \) is a vector. That vector is called a linear combination of \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \).
+
+The set of all linear combinations of \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \) is called the span of the vectors \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \), and is denoted by \( \mbox{Span }(\overrightarrow v_1, \dots, \overrightarrow v_k) \).
+
+Theorem 2
+
+Assume that \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k\in\mathbb R^n \) and that \( W=\mbox{Span }(\overrightarrow v_1, \dots, \overrightarrow v_k) \). Then the set \( W \) has all the properties from Theorem 1.
+
+Hide proof
+
+The proof is very easy and is left as an excercise.
+
+Vectors \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \) are called linearly dependent if there are scalars \( \alpha_1 \), \( \dots \), \( \alpha_k \) such that at least one of them is non-zero and: \( \alpha_1\overrightarrow v_1+\cdots+\alpha_k\overrightarrow v_k=\overrightarrow 0 \).
+
+Theorem 3
+
+Assume that \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k\in\mathbb R^n \). The vectors \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \) are linearly independent if and only if for every \( i\in\{1,\dots, k\} \) the vector \( \overrightarrow v_i \) is not in the span of \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_{i-1} \), \( \overrightarrow v_{i+1} \), \( \dots \), \( \overrightarrow v_k \).
+
+Hide proof
+
+This proof of theorem contains two parts.
+
+First, we need to prove that if \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \) are linearly independent then none of the vectors is in span of the others. Assume the contrary, that these vectors are linearly independent and that for some \( i\in\{1,2,\dots, k\} \) there are scalars \( \alpha_1 \), \( \dots \), \( \alpha_{i-1} \), \( \alpha_{i+1} \), \( \dots \), \( \alpha_k \) such that \[ \overrightarrow v_i=\alpha_1\overrightarrow v_1+\cdots+ \alpha_{i-1}\overrightarrow v_{i-1}+ \alpha_{i+1}\overrightarrow v_{i+1}+\cdots \alpha_{k}\overrightarrow v_{k}.\] This implies that there exist \( \lambda_1 \), \( \dots \), \( \lambda_k \) such that: \[ \lambda_1\overrightarrow v_1+\cdots+ \lambda_{k}\overrightarrow v_{k}=0.\] Indeed, we can take \( \lambda_j=\alpha_j \) for \( j\in \{1,\dots, i-1,i+1,\dots, k\} \), and \( \lambda_i=-1 \).
+
+Now, we need to prove the following: If none of the vectors \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \) is in the span of the others, then \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \) are linearly independent.
+
+Assume that none of the vectors \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \) is in the span of the others. Assume that \( \mu_1 \), \( \dots \), \( \mu_k \) are real numbers such that \[ \mu_1\overrightarrow v_1+\cdots+\mu_k\overrightarrow v_k=0.\quad\quad\quad\quad\quad (1)\] We will prove that all \( \mu_1 \), \( \dots \), \( \mu_k \) must be \( 0 \). Assume the contrary, that there exist \( l\in\{1,2,\dots, k\} \) such that \( \mu_l\neq 0 \). Then we can divide both sides of (1) by \( \mu_l \) and obtain: \begin{eqnarray*}0&=&\frac{\mu_1}{\mu_l}\overrightarrow v_1+\cdots+ \frac{\mu_{l-1}}{\mu_l}\overrightarrow v_{l-1}+ \overrightarrow v_l+ \frac{\mu_{l+1}}{\mu_l}\overrightarrow v_{l+1}+\cdots+\frac{\mu_k}{\mu_l}\overrightarrow v_k \\ &\Leftrightarrow &\\ \overrightarrow v_l&=&\frac{-\mu_1}{\mu_l}\overrightarrow v_1 +\cdots+ \frac{-\mu_{l-1}}{\mu_l}\overrightarrow v_{l-1} + \frac{-\mu_{l+1}}{\mu_l}\overrightarrow v_{l+1}+\cdots+\frac{-\mu_k}{\mu_l}\overrightarrow v_k, \end{eqnarray*} which contradicts the assumption that \( \overrightarrow v_l \) is not in the span of \( \{\overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_{l-1} \), \( \overrightarrow v_{l+1} \), \( \dots \), \( \overrightarrow v_k\} \).
+
+General definition of real vector spaces
+
+In order to have a general vector space, we need a set \( V \) whose elements will be called vectors and an operation \( + \) defined on \( V \). In order for \( + \) to be defined, it must hold that for each pair \( u,v\in V \), the element \( u+v \) exists and is an element of \( V \).
+
+We are going to give a formal definition of the vector space now:
+Definition 1 (Commutative group)
+
+
+Assume that \( V \) is and \( + \) an operation on \( V \). We say that \( (V,+) \) is a commutative group if there exists an element \( e\in V \) such that the following conditions are satisfied:
+
+    (Associativity) For every three elements \( u, v,w\in V \) the following holds: \( u+(v+w)=(u+v)+w \).
+
+    (Neutral) For every element \( u\in V \) the following holds: \( u+e=e+u=u \).
+
+    (Inverse) For every element \( u\in V \) there exists an element \( \bar u\in V \) such that \( u+\bar u=\bar u+u=e \).
+
+    (Commutativity) For every two elements \( u,v\in V \) the following holds: \( u+v=v+u \).
+
+We say that an exterior multiplication is defined on a set \( V \) if for each \( \alpha\in \mathbb R \) and each \( v\in V \), \( \alpha v \) is an element of \( V \).
+
+Definition 2 (Vector space)
+
+
+Assume that \( V \) is a set on which exterior multiplication is defined. We say that \( V \) is a real vector space (or simply a vector space) if for each \( u,v\in V \) and every \( \alpha, \beta\in \mathbb R \) the following relations hold:
+
+    (V1) \( (V,+) \) is a commutative group,
+
+    (V2) \( \alpha(u+v)=\alpha u+\alpha v \),
+
+    (V3) \( (\alpha+\beta)u=\alpha u+\beta u \),
+
+    (V4) \( (\alpha\beta)u=\alpha (\beta u) \),
+
+    (V5) \( 1u=u \).
+
+A vector space \( W \) is a subspace of \( V \), if \( W\subseteq V \).
+
+Using this newly introduced terminology we can say that every span is a vector space. Moreover, a span of vectors \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \) is a subspace of \( \mathbb R^k \).
+Basis. Dimension
+Definition 3 (Basis)
+
+
+A set of vectors \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \) is a basis of the vector space \( V \) if the following two conditions are satisfied:
+
+    (i) \(\displaystyle V=\mbox{Span }(\overrightarrow v_1, \dots, \overrightarrow v_k)\).
+
+    (ii) The vectors \( \overrightarrow v_1 \), \( \dots \), \( \overrightarrow v_k \) are linearly independent.
+
+We will now prove that any two basis must have the same number of elements.
+
+Theorem 4
+
+If \( \{\overrightarrow v_1, \dots, \overrightarrow v_n\} \) and \( \{\overrightarrow w_1, \dots, \overrightarrow w_m\} \) are two basis of \( V \), then \( n=m \).
+
+Hide proof
+
+Assume the contrary, that \( m\neq n \). Without loss of generality we may assume that \( m> n \). For each \( i\in\{1,2,\dots, m\} \) here are scalars \( \alpha_{i1} \), \( \dots \), \( \alpha_{in} \) such that \( \overrightarrow w_i=\alpha_{i1}\overrightarrow v_1+\cdots+ \alpha_{in}\overrightarrow v_n \). The first \( n \) of these equations give us the following system: \begin{eqnarray*} \overrightarrow w_1&=&\alpha_{11}\overrightarrow v_1+\cdots+ \alpha_{1n}\overrightarrow v_n\\ \overrightarrow w_2&=&\alpha_{21}\overrightarrow v_1+\cdots+ \alpha_{2n}\overrightarrow v_n\\ &\vdots&\\ \overrightarrow w_n&=&\alpha_{n1}\overrightarrow v_1+\cdots+ \alpha_{nn}\overrightarrow v_n. \end{eqnarray*} This system can be reduce to the row-echelon form. If there are less than \( n \) non-zero rows, then the vectors \( \overrightarrow w_1 \), \( \dots \), \( \overrightarrow w_n \) are not linearly independent, which is impossible.
+
+Thus there are exactly \( n \) non-zero rows, which means that the system is solvable. In other words, there are scalars \( \beta_{ij} \), \( 1\leq i,j\leq n \) such that for each \( i\in\{1,2,\dots, n\} \) we have \( \overrightarrow v_i=\beta_{i1}\overrightarrow w_1+\cdots+ \beta_{in}\overrightarrow w_n \). We now have \begin{eqnarray*} \overrightarrow w_{n+1}&=&\alpha_{n+1,1}\overrightarrow v_1+\cdots+\alpha_{n+1,n}\overrightarrow v_n\\ &=&\alpha_{n+1,1}\left(\beta_{11}\overrightarrow w_1+\cdots +\beta_{1n}\overrightarrow w_n\right) + \cdots + \alpha_{n+1,n}\left(\beta_{n1}\overrightarrow w_1+\cdots +\beta_{nn}\overrightarrow w_n\right). \end{eqnarray*} We have proved that \( \overrightarrow w_{n+1}\in\mbox{Span }(\overrightarrow w_1, \dots, \overrightarrow w_n) \), which is a contradiction.
+
+The number of elements in a basis is called dimension.

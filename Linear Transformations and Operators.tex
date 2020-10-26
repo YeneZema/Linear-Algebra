@@ -1,0 +1,106 @@
+ 
+%http://www.imomath.com/index.php?options=782&lmm=0
+Linear Transformations and Operators
+Definition of linear transformations and operators
+Definition 1 (linear transformation and linear operator)
+
+
+A function \( L:\mathbb R^k\to\mathbb R^m \) is called a linear transformation if \( L(\alpha u+\beta v)=\alpha L(u)+\beta L(v) \) for all vectors \( u,v\in\mathbb R^k \) and all scalars \( \alpha,\beta\in\mathbb R \). If \( k=m \), the linear transformation is also called linear operator.
+
+Example 1
+
+Let \( L:\mathbb R^2\to\mathbb R^2 \) be a function defined in the following way: \begin{eqnarray*}L\left(\left[\begin{array}{c}x\\y\end{array}\right]\right)=\left[\begin{array}{c}x+y\\x-y\end{array}\right].\end{eqnarray*} Prove that \( L \) is a linear operator.
+
+Hide solution
+
+Let \( u_1=\left[\begin{array}{c}x_1\\y_1\end{array}\right]\) and \( u_2=\left[\begin{array}{c}x_1\\y_1\end{array}\right]\) be two vectors, and \( \alpha_1 \) and \( \alpha_2 \) two real numbers. Then we have: \begin{eqnarray*} L\left(\alpha_1 u_1+\alpha_2u_2\right)&=&L\left(\left[\begin{array}{c}\alpha_1x_1+\alpha_2x_2\\ \alpha_1y_1+\alpha_2y_2\end{array}\right]\right) = \left[\begin{array}{c}\alpha_1x_1+\alpha_2x_2+\alpha_1y_1+\alpha_2y_2\\\alpha_1x_1+\alpha_2x_2-\alpha_1y_1-\alpha_2y_2\end{array}\right]\\ &=& \left[\begin{array}{c}\alpha_1x_1+ \alpha_1y_1 \\\alpha_1x_1 -\alpha_1y_1 \end{array}\right]+\left[\begin{array}{c} \alpha_2x_2 +\alpha_2y_2\\ \alpha_2x_2-\alpha_2y_2\end{array}\right]=\alpha_1L(u_1)+\alpha_2L(u_2). \end{eqnarray*}
+
+Example 2
+
+Assume that \( L:\mathbb R^2\to\mathbb R^2 \) is the linear operator that satisfies \( L\left(\left[\begin{array}{c}1\\0\end{array}\right]\right)=\left[\begin{array}{c}3\\-2\end{array}\right]\) and \( L\left(\left[\begin{array}{c}0\\1\end{array}\right]\right)=\left[\begin{array}{c}2\\5\end{array}\right]\). Determine \( L\left(\left[\begin{array}{c}3\\7\end{array}\right]\right)\).
+
+Hide solution
+
+Let \( u=\left[\begin{array}{c}1\\0\end{array}\right]\) and \( v=\left[\begin{array}{c}0\\1\end{array}\right]\). Notice that \( \left[\begin{array}{c}3\\7\end{array}\right]=3u+7v \), hence \begin{eqnarray*}L\left[\begin{array}{c}3\\7\end{array}\right]&=&L(3u+7v)=3L(u)+7L(v)=3\left[\begin{array}{c}3\\-2\end{array}\right]+7\left[\begin{array}{c}2\\5\end{array}\right]=\left[\begin{array}{c}9\\-6\end{array}\right]+ \left[\begin{array}{c}14\\35\end{array}\right]=\left[\begin{array}{c}23\\29\end{array}\right]. \end{eqnarray*}
+
+Example 3
+
+Assume that \( L:\mathbb R^2\to\mathbb R^2 \) is the linear operator that satisfies \( L\left(\left[\begin{array}{c}2\\-3\end{array}\right]\right)=\left[\begin{array}{c}1\\-2\end{array}\right]\) and \( L\left(\left[\begin{array}{c}3\\-1\end{array}\right]\right)=\left[\begin{array}{c}2\\1\end{array}\right]\). Determine \( L\left(\left[\begin{array}{c}1\\2\end{array}\right]\right)\).
+
+Hide solution
+
+Let \( u=\left[\begin{array}{c}2\\-3\end{array}\right]\), \( v=\left[\begin{array}{c}3\\-1\end{array}\right]\), and \( w=\left[\begin{array}{c}1\\2\end{array}\right]\). We will first find scalars \( \alpha \) and \( \beta \) such that \( w=\alpha u+\beta v \). Then we will use \( L(w)=L(\alpha u+\beta v)=\alpha L(u)+\beta L(v) \).
+
+The scalars \( \alpha \) and \( \beta \) must satisfy: \begin{eqnarray*} 2\alpha+3\beta&=&1\\ -3\alpha-\beta&=&2. \end{eqnarray*} We n multiply the second equation by \( 3 \) and add it to the first to obtain: \( -7\alpha=7 \), hence \( \alpha=-1 \). From the first equation we get \( \beta=\frac13(1-2\alpha)=1 \). Thus \[L(w)=-L(u)+L(v)=\left[\begin{array}{c}2\\1\end{array}\right] - \left[\begin{array}{c}1\\-2\end{array}\right]=\left[\begin{array}{c}1\\3\end{array}\right].\]
+
+Matrix of linear transfomration
+Theorem 1
+
+
+Assume that \( e_1 \), \( \dots \), \( e_m \) is a basis of \( \mathbb R^m \), and assume that \( f_1 \), \( \dots \), \( f_m \) are vectors from \( \mathbb R^n \). There exists a unique linear transformation \( L:\mathbb R^m\to\mathbb R^n \) such that \( L(e_1)=f_1 \), \( \dots \), \( L(e_m)=f_m \).
+
+Hide proof
+
+We will first define \( L(w) \) for each \( w\in\mathbb R^m \). Assume that \( w\in\mathbb R^m \) is given. Since \( \{e_1, \dots, e_m\} \) is a basis of \( \mathbb R^m \) there are scalars \( \alpha_1 \), \( \dots \), \( \alpha_m \) such that \( w=\alpha_1e_1+\cdots+\alpha_me_m \). Then we define \( L(w)=\alpha_1f_1+\cdots+\alpha_mf_m \). It is very easy to prove that \( L \) is linear.
+
+Assume now that \( L \) and \( K \) are two linear transformations such that \( L(e_1)=K(e_1) \), \( \dots \), \( L(e_m)=K(e_m) \). Let \( w\in\mathbb R^m \). We will prove that \( L(w)=K(w) \). There are scalars \( \alpha_1 \), \( \dots \), \( \alpha_m \) such that \( w=\alpha_1e_1+\cdots+\alpha_me_m \). Since \( L \) and \( K \) are linear we must have: \[ L(w)=L(\alpha_1e_1+\cdots +\alpha_me_m)=\alpha_1L(e_1)+\cdots+\alpha_mL(e_m)=\alpha_1K(e_1)+\cdots+\alpha_mK(e_m)=K(\alpha_1e_1+\cdots \alpha_me_m)=K(w).\]
+
+Definition 2 (Matrix of linear transformation)
+
+
+Assume that \( L:\mathbb R^m\to\mathbb R^n \) is as linear transformation, and assume that \( e_1=\left[\begin{array}{c} 1\\0\\ \vdots\\ 0\end{array}\right]\), \( \dots \), \( e_m=\left[\begin{array}{c}0\\0\\ \vdots\\ 1\end{array}\right]\) is the standard basis of \( \mathbb R^m \). Assume that \( L(e_1)=\left[\begin{array}{c} a_{11}\\ a_{21}\\ \vdots \\ a_{n1}\end{array}\right]\), \( \dots \), \( L(e_m)=\left[\begin{array}{c} a_{1m}\\ a_{2m}\\ \vdots \\ a_{nm}\end{array}\right]\). Then \( A=\left[\begin{array}{cccc} a_{11}&a_{12}&\cdots&a_{1m}\\ a_{21}&a_{22}&\cdots&a_{2m}\\ & & \vdots& \\ a_{n1}&a_{n2}&\cdots&a_{nm}\end{array}\right]\) is called the matrix of the transfromation \( L \).
+
+Example 4
+
+Determine the matrix of the linear transformation \( L:\mathbb R^3\to\mathbb R^2 \) that satisfies \( L\left(\left[\begin{array}{c}1\\0\\0\end{array}\right]\right)=\left[\begin{array}{c} 3\\2\end{array}\right]\), \( L\left(\left[\begin{array}{c}0\\1\\1\end{array}\right]\right)=\left[\begin{array}{c} 3\\3\end{array}\right]\), and \( L\left(\left[\begin{array}{c}-1\\1\\2\end{array}\right]\right)=\left[\begin{array}{c}1\\4\end{array}\right]\).
+
+Hide solution
+
+Let us denote by \( e_1 \), \( e_2 \), and \( e_3 \) the vectors of the standard basis of \( \mathbb R^3 \). In other words, we have: \( e_1=\left[\begin{array}{c}1\\0\\0\end{array}\right]\), \( e_1=\left[\begin{array}{c}0\\1\\0\end{array}\right]\), and \( e_3=\left[\begin{array}{c}0\\0\\1\end{array}\right]\). In order to determine the matrix of \( L \) we need to find \( L(e_1) \), \( L(e_2) \), and \( L(e_3) \). Let \( f_2=\left[\begin{array}{c}0\\1\\1\end{array}\right]\) and \( f_3=\left[\begin{array}{c}-1\\1\\2\end{array}\right]\). We will now express \( e_2 \) and \( e_3 \) in terms of \( e_1 \), \( f_2 \), and \( f_3 \). We will first find the scalars \( \alpha_1 \), \( \alpha_2 \), and \( \alpha_3 \) such that \( e_2=\alpha_1 e_1+\alpha_2f_2+\alpha_3f_3 \). The last equation is equivalent to the following system: \begin{eqnarray*} \begin{array}{ccccc} \alpha_1&&-\alpha_3&=&0\\ &\alpha_2&+\alpha_3&=&1\\ &\alpha_2&+2\alpha_3&=&0. \end{array} \end{eqnarray*} From the last two equations we get \( \alpha_3=-1 \). Now the first equations implies \( \alpha_1=-1 \), and the second that \( \alpha_2=2 \). Thus \[L(e_2)=L(-e_1+2f_2-f_3)=-\left[\begin{array}{c}3\\2\end{array}\right]+2\left[\begin{array}{c}3\\3\end{array}\right]- \left[\begin{array}{c}1\\4\end{array}\right]=\left[\begin{array}{c}2\\0\end{array}\right].\]
+
+It remains to find \( L(e_3) \). In order to do so we first need to find \( \beta_1 \), \( \beta_2 \), and \( \beta_3 \) such that \( e_3=\beta_1e_1+\beta_2f_2+\beta_3f_3 \). The last equation can be written as: \begin{eqnarray*} \begin{array}{ccccc} \beta_1&&-\beta_3&=&0\\ &\beta_2&+\beta_3&=&0\\ &\beta_2&+2\beta_3&=&1. \end{array} \end{eqnarray*} From the last two equations we get \( \beta_3=1 \). The first equation implies that \( \beta_1=1 \), and the second that \( \beta_2=-1 \). Therefore \[L(e_3)=L(e_1-f_2+f_3)=\left[\begin{array}{c}3\\2\end{array}\right]-\left[\begin{array}{c}3\\3\end{array}\right]+ \left[\begin{array}{c}1\\4\end{array}\right]=\left[\begin{array}{c}1\\3\end{array}\right].\] Thus the matrix of the transformation \( L \) is \( \left[\begin{array}{ccc}3&2&1\\2&0&3\end{array}\right]\).
+
+Composition of linear transformations
+
+Since linear transformations are functions themselves, we can study their composition. If \( L:\mathbb R^m\to\mathbb R^n \) and \( K:\mathbb R^n\to\mathbb R^p \) are two linear transformations than \( K\circ L:\mathbb R^m\to\mathbb R^p \) is a function. Our next result shows that \( K\circ L \) is a linear transformation.
+
+Theorem 2
+
+
+Assume that \( L:\mathbb R^m\to\mathbb R^n \) and \( K:\mathbb R^n\to\mathbb R^p \) are two linear transformations. Then the function \( M:\mathbb R^m\to\mathbb R^p \) defined as \( M(u)=K(L(u)) \) for each \( u\in\mathbb R^m \) is a linear transformation.
+
+Hide proof
+
+Assume that \( u,v\in\mathbb R^m \) and that \( \alpha \) and \( \beta \) are two real numbers. We need to prove that \( M(\alpha u+\beta v)=\alpha M(u)+\beta M(v) \).
+
+Using the definition of \( M \) and the linearity of \( K \) and \( L \) we obtain: \[ M(\alpha u+\beta v)=K(L(\alpha u+\beta v))=K(\alpha L(u)+\beta L(v))=\alpha K(L(u))+\beta K(L(v))=\alpha M(u)+\beta M(v).\] This completes the proof of the theorem.
+
+The following theorem states that the linear combination of two linear transformations with the same domain and codomain is linear.
+
+Theorem 3
+
+
+Assume that \( L:\mathbb R^m\to\mathbb R^n \) and \( K:\mathbb R^m\to\mathbb R^n \) are two linear transformations. If \( \alpha \) and \( \beta \) are two real numbers that the function \( M:\mathbb R^m\to\mathbb R^n \) defined as \( M(u)=\alpha L(u)+\beta K(u) \) for \( u\in \mathbb R^m \) is a linear transformation.
+
+Hide proof
+
+Assume that \( u,v\in\mathbb R^m \) and that \( \gamma \) and \( \delta \) are two real numbers. We need to prove that \( M(\gamma u+\delta v)=\gamma M(u)+\delta M(v) \).
+
+Using the definition of \( M \) and the linearity of \( K \) and \( L \) we obtain: \begin{eqnarray*}M(\gamma u+\delta v)&=&\alpha L(\gamma u+\delta v)+\beta K(\gamma u+\delta v)=\alpha \left(\gamma L(u)+\delta L(v)\right) + \beta \left(\gamma K(u)+\delta K(v)\right) \\&=&\gamma\left(\alpha L(u)+\beta K(u)\right)+\delta \left(\alpha L(v)+\beta K(v)\right)= \gamma M(u)+\delta M(v) .\end{eqnarray*} This completes the proof of the theorem.
+
+Matrix of the composition. Product of matrices
+
+Theorem 4
+
+
+Assume that \( L:\mathbb R^m\to\mathbb R^n \) and \( K:\mathbb R^n\to\mathbb R^p \) are two linear transformations and that \( Q=K\circ L \). Assume that the \( \hat L= \left[\begin{array}{ccccc} l_{11}&l_{12}&l_{13}& \cdots &l_{1m}\\ l_{21}&l_{22}&l_{23}&\cdots &l_{2m}\\ &&&\vdots&\\ l_{n1}&l_{n2}&l_{n3}&\cdots&l_{nm}\end{array}\right]\), \( \hat K= \left[\begin{array}{ccccc} k_{11}&k_{12}&k_{13}& \cdots &k_{1n}\\ k_{21}&k_{22}&k_{23}&\cdots &k_{2n}\\ &&&\vdots&\\ k_{p1}&k_{p2}&k_{p3}&\cdots&k_{pn}\end{array}\right]\), and \( \hat Q=\left[\begin{array}{ccccc} q_{11}&q_{12}&q_{13}& \cdots &q_{1m}\\ q_{21}&q_{22}&q_{23}&\cdots &q_{2m}\\ &&&\vdots&\\ q_{p1}&q_{p2}&q_{pm}&\cdots&q_{pm}\end{array}\right]\), respectively, are the matrices of \( L \), \( K \), and \( Q \). Then for each \( (i,j)\in\{1,2,\dots p\} \times\{1,2,\dots, m\} \) the following equality holds: \[ q_{ij}=\sum_{s=1}^n k_{is}l_{sj}.\]
+
+Hide proof
+
+Let \( e_1 \), \( \dots \), \( e_m \) be the vectors of the standard basis of \( \mathbb R^m \). Then \( e_j \) is the column vector with \( m \) entries, such that the \( j \)-th entry is \( 1 \) and every other entry is \( 0 \). We have that \( Q(e_j)=\left[\begin{array}{c}q_{1j}\\ q_{2j}\\\vdots\\ q_{pj}\end{array}\right]\).
+
+By the definition of \( Q \) we have \( Q(e_j)=K(L(e_j)) \). We have \( L(e_j)=\left[\begin{array}{c}l_{1j}\\ l_{2j}\\\vdots\\ q_{nj}\end{array}\right]\). Let us denote by \( f_1 \), \( \dots \), \( f_n \) the standard basis of \( \mathbb R^n \). Then we can write \(  L(e_j)=\sum_{s=1}^n l_{sj}f_s \). Using the linearity of \( K \) we conclude \[Q(e_j)=K(L(e_j))=\sum_{s=1}^n l_{sj}K(f_s)=\sum_{s=1}^n l_{sj} \left[\begin{array}{c} k_{1s}\\k_{2s}\\\vdots\\ k_{ps} \end{array}\right]=\left[\begin{array}{c}\sum_{s=1}^n l_{sj}k_{1s}\\ \sum_{s=1}^n l_{sj}k_{2s}\\ \vdots\\ \sum_{s=1}^n l_{sj}k_{ps}\end{array}\right]. \] Thus the \( i \)-th entry of \( Q(e_j) \) is \(  q_{ij}=\sum_{s=1}^n l_{sj}k_{is}=\sum_{s=1}^nk_{is}l_{sj} \).
+
+The matrix \( \hat Q \) is called the product of matrices \( \hat K \) and \( \hat L \) and is denoted as \( \hat Q=\hat K\cdot \hat L \). We say that the matrix \( \hat L \) is of the format \( n\times m \), the matrix \( \hat K \) is of the format \( p\times n \), and the matrix \( \hat Q \) is of the format \( p\times m \).
+
+In the future we will often use interchangeably trnasformations and their matrices and we will use the same letter to denote them. We will also write \( Lu \) instead of \( L(u) \) when we are dealing with a transformation \( L \) and a vector \( u \). This is consistent with the matrix interpretation in which \( L \) is an \( n\times m \) matrix and \( u \) is an \( 1\times m \) matrix. 

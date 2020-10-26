@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+
+% This first part of the file is called the PREAMBLE. It includes
+% customizations and command definitions. The preamble is everything
+% between \documentclass and \begin{document}.
+
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm}                % better theorem environments
+\usepackage{amsthm,amssymb}
+
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{color}
+
+%Here I define some theorem styles and shortcut commands for symbols I use often
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}{Corollary}
+\newtheorem*{rmk}{Remark}
+\newtheorem{lem}{Lemma}
+\newtheorem*{joke}{Joke}
+\newtheorem{ex}{Example}
+\newtheorem*{soln}{Solution}
+\newtheorem{prop}{Proposition}
+
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+
+\begin{document}
+
+
+\nocite{}
+
+\title{\textbf{Eigenvalues and Diagonalization}}
+
+\author{Miliyon T.}
+\date{August 11, 2015}
+\maketitle
+
+
+\section*{Eigenvalues and Eigenvectors}
+
+\begin{defn}
+Let $A$ be an $n\times n$ matrix. The scalar $\lambda$ is called an eigenvalue\footnote{The terms eigenvalue and eigenvector are derived from the German word \textit{Eigenwert}(Proper value).} of $A$ if there is a nonzero vector $\mathbf{x}$ such that
+\[A\mathbf{x}=\lambda \mathbf{x}\]
+The vector $\mathbf{x}$ is called an eigenvector of $A$ corresponding to $\lambda$.
+\end{defn}
+
+\begin{rmk}
+Note that an eigenvector cannot be zero. Allowing $\mathbf{x}$ to be the zero vector would render the definition meaningless, because $A\mathbf{0}=\lambda \mathbf{0}$ is true for all real values of $\lambda$.
+An eigenvalue of $\lambda =0$, however, is possible.
+\end{rmk}
+\subsection*{Definition}
+
+\begin{itemize}
+\item Let $A=(a_{ij})$ be a square matrix of order n over F$(M_n(F))$. A vector $x\in F^n$ is called an \textbf{eigenvector} of $A$ if $ \exists \lambda \in F$ such that
+      \[Ax=\lambda x\]
+  Where $\lambda$-\textbf{eigenvalue} of $A$ corresponding to the \textbf{eigenvector} $x$.
+
+\subitem Geometric multiplicity
+\subitem Algebraic multiplicity
+\item  $|A-\lambda I_n|=\det(A-\lambda I_n)$ is a polynomial of degree $n$ known as characteristics polynomial of $A$ denoted by $P(\lambda )=|A-\lambda I_n|$
+\item  The equation $|\lambda I_n -A|=0$ is called \textbf{characteristic equation} of a matrix $A$.
+\item \emph{\textbf{Similar Matrix}}: The matrices $A$ and $B\in M_n(F)$ are Similar if there exists an invertible matrix $P$ such that
+   \[B=P^{-1}AP\]
+\item \emph{\textbf{Diagonalizable matrix}}: Let $A\in M_n(F)$. $A$ is said to be diagonalizable if $A$ is similar to a diagonal matrix $D$.
+    \[A=PDP^{-1}\]
+
+\end{itemize}
+\newpage
+\begin{ex}
+Find the eigenvalues and corresponding eigenvectors of
+\[A=\begin{bmatrix}
+2 & -4\\
+3 & -5
+\end{bmatrix}\]
+\end{ex}
+\begin{proof}[Solution]
+The characteristic polynomial of $A$ is
+\begin{align*}
+|\lambda I-A|&=\left|\begin{matrix} \lambda-2 & 4\\ -3 & \lambda+5 \end{matrix}\right|\\
+             &=(\lambda-2)(\lambda+5)-(-12)\\
+             &=\lambda^2+3\lambda-10+12\\
+             &=\lambda^2+3\lambda+2\\
+             &=(\lambda+1)(\lambda+2)
+\end{align*}
+Now, we have $\lambda_1=-1$ and $\lambda_2=-2$ as eigenvalue. To find the corresponding eigenvector
+\end{proof}
+
+
+\begin{rmk}[Formula for eigenvalue]
+For a $2\times 2$ matrix
+\[\begin{bmatrix} a & b\\ c & d \end{bmatrix}\]
+The possible value for the eigenvalues are given by
+\[\frac{1}{2}\biggl(a+d-\sqrt{a^2+4bc-2ad+d^2}\biggl),\qquad \frac{1}{2}\biggl(a+d+\sqrt{a^2+4bc-2ad+d^2}\biggl)\]
+\end{rmk}
+
+
+ \begin{thebibliography}{9}
+
+\bibitem{May}
+[Demissu Gemeda]
+Topics in Linear Algebra,
+Addis Ababa University 2005.
+
+\bibitem{amsshort}
+[Sheldon Axler]
+Linear Algebra Done Right,
+Springer Publishing 1997.
+
+\bibitem{notsoshort}
+[Kolman \S  Hill]
+Introduction to Linear Algebra with Applications 2000.
+
+\end{thebibliography}
+
+\end{document}
